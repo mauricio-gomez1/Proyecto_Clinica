@@ -46,9 +46,9 @@
 ?>
 <?php
 
-$con = mysqli_init();
-mysqli_ssl_set($conn,NULL,NULL, "/var/www/html/DigiCertGlobalRootCA.crt.pem", NULL, NULL);
-mysqli_real_connect($con, 'dbhealthcare.mysql.database.azure.com', 'root1', 'Mauricio_1', 'db_healthcare', 3306, MYSQLI_CLIENT_SSL);
+$con = mysqli_connect('dbhealthcare.mysql.database.azure.com', 'root1', 'Mauricio_1', 'db_healthcare',);
+
+
 if (mysqli_connect_errno()) {
 die('Failed to connect to MySQL: '.mysqli_connect_error());
 }
