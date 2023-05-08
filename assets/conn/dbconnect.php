@@ -45,11 +45,9 @@
 //   }
 ?>
 <?php
-$con = mysqli_connect("localhost","root","","db_healthcare");
-
-// Check connection
-if (mysqli_connect_errno())
-  {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  }
-  ?>
+$conn = mysqli_init();
+mysqli_ssl_set($conn,NULL,NULL, "/var/www/html/DigiCertGlobalRootCA.crt.pem", NULL, NULL);
+mysqli_real_connect($conn, 'mdbhealthcare.mysql.database.azure.com', 'root1', 'Mauricio_1', 'quickstartdb', 3306, MYSQLI_CLIENT_SSL);
+if (mysqli_connect_errno($conn)) {
+die('Failed to connect to MySQL: '.mysqli_connect_error());
+}

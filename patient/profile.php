@@ -270,7 +270,7 @@ $widowed = "checked";
 																<label><input type="radio" name="patientGender" value="male" <?php echo $male; ?>>Hombre</label>
 															</div>
 															<div class="radio">
-																<label><input type="radio" name="patientGender" value="female" <?php echo $female; ?>>Mentirosa</label>
+																<label><input type="radio" name="patientGender" value="female" <?php echo $female; ?>>Mujer</label>
 															</div>
 														</td>
 													</tr>
