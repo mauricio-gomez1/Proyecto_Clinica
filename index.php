@@ -28,7 +28,7 @@ alert('Login Success');
 </script>
 <?php
 header("Location: /patient/patient.php");
-exit();
+
 } else {
 ?>
 <script>

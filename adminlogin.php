@@ -23,7 +23,7 @@ alert('Login Success');
 </script>
 <?php
 header("Location: /doctor/doctordashboard.php");
-exit();
+
 } else {
 ?>
 <script type="text/javascript">
