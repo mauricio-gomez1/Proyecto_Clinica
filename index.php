@@ -1,80 +1,84 @@
 <?php
 include_once 'assets/conn/dbconnect.php';
-// include_once 'assets/conn/server.php';
-?>
 
-
-<!-- login -->
-<!-- check session -->
-<?php
 session_start();
-// session_destroy();
-if (isset($_SESSION['patientSession']) != "") {
-header("Location: patient/patient.php");
-}
-if (isset($_POST['login']))
-{
-$icPatient = mysqli_real_escape_string($con,$_POST['icPatient']);
-$password  = mysqli_real_escape_string($con,$_POST['password']);
 
-$res = mysqli_query($con,"SELECT * FROM patient WHERE icPatient = '$icPatient'");
-$row=mysqli_fetch_array($res,MYSQLI_ASSOC);
-if ($row['password'] == $password)
-{
-$_SESSION['patientSession'] = $row['icPatient'];
-?>
-<script type="text/javascript">
-alert('Login Success');
-</script>
-<?php
-header("Location: /patient/patient.php");
+// Redireccionar si ya hay una sesión activa
+if (isset($_SESSION['patientSession'])) {
+    header("Location: patient/patient.php");
+    exit();
+}
 
-} else {
-?>
-<script>
-alert('wrong input ');
-</script>
-<?php
+// Inicio de sesión
+if (isset($_POST['login'])) {
+    $icPatient = mysqli_real_escape_string($con, $_POST['icPatient']);
+    $password = mysqli_real_escape_string($con, $_POST['password']);
+
+    $res = mysqli_query($con, "SELECT * FROM patient WHERE icPatient = '$icPatient'");
+    $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
+
+    if ($row && $row['password'] == $password) {
+        $_SESSION['patientSession'] = $row['icPatient'];
+        header("Location: /patient/patient.php");
+        exit();
+    } else {
+        $loginError = "Invalid IC number or password.";
+    }
 }
-}
-?>
-<!-- register -->
-<?php
+
+// Registro
 if (isset($_POST['signup'])) {
-$patientFirstName = mysqli_real_escape_string($con,$_POST['patientFirstName']);
-$patientLastName  = mysqli_real_escape_string($con,$_POST['patientLastName']);
-$patientEmail     = mysqli_real_escape_string($con,$_POST['patientEmail']);
-$icPatient     = mysqli_real_escape_string($con,$_POST['icPatient']);
-$password         = mysqli_real_escape_string($con,$_POST['password']);
-$month            = mysqli_real_escape_string($con,$_POST['month']);
-$day              = mysqli_real_escape_string($con,$_POST['day']);
-$year             = mysqli_real_escape_string($con,$_POST['year']);
-$patientDOB       = $year . "-" . $month . "-" . $day;
-$patientGender = mysqli_real_escape_string($con,$_POST['patientGender']);
-//INSERT
-$query = " INSERT INTO patient (  icPatient, password, patientFirstName, patientLastName,  patientDOB, patientGender,   patientEmail )
-VALUES ( '$icPatient', '$password', '$patientFirstName', '$patientLastName', '$patientDOB', '$patientGender', '$patientEmail' ) ";
-$result = mysqli_query($con, $query);
-echo $result;
-if( $result )
-{
-?>
-<script type="text/javascript">
-alert('Register success. Please Login to make an appointment.');
-</script>
-<?php
-}
-else
-{
-?>
-<script type="text/javascript">
-alert('User already registered. Please try again');
-</script>
-<?php
-}
+    $patientFirstName = mysqli_real_escape_string($con, $_POST['patientFirstName']);
+    $patientLastName = mysqli_real_escape_string($con, $_POST['patientLastName']);
+    $patientEmail = mysqli_real_escape_string($con, $_POST['patientEmail']);
+    $icPatient = mysqli_real_escape_string($con, $_POST['icPatient']);
+    $password = mysqli_real_escape_string($con, $_POST['password']);
+    $month = mysqli_real_escape_string($con, $_POST['month']);
+    $day = mysqli_real_escape_string($con, $_POST['day']);
+    $year = mysqli_real_escape_string($con, $_POST['year']);
+    $patientDOB = $year . "-" . $month . "-" . $day;
+    $patientGender = mysqli_real_escape_string($con, $_POST['patientGender']);
 
+    // Verificar si el usuario ya está registrado
+    $existingUserQuery = "SELECT * FROM patient WHERE icPatient = '$icPatient'";
+    $existingUserResult = mysqli_query($con, $existingUserQuery);
+
+    if (mysqli_num_rows($existingUserResult) > 0) {
+        $registrationError = "User already registered. Please try again.";
+    } else {
+        // Insertar nuevo usuario
+        $insertQuery = "INSERT INTO patient (icPatient, password, patientFirstName, patientLastName, patientDOB, patientGender, patientEmail)
+                        VALUES ('$icPatient', '$password', '$patientFirstName', '$patientLastName', '$patientDOB', '$patientGender', '$patientEmail')";
+        $insertResult = mysqli_query($con, $insertQuery);
+
+        if ($insertResult) {
+            $registrationSuccess = "Register success. Please login to make an appointment.";
+        } else {
+            $registrationError = "Registration failed. Please try again.";
+        }
+    }
 }
 ?>
+
+<!-- Mostrar errores o mensajes de éxito -->
+<?php if (isset($loginError)) : ?>
+    <script type="text/javascript">
+        alert('<?php echo $loginError; ?>');
+    </script>
+<?php endif; ?>
+
+<?php if (isset($registrationSuccess)) : ?>
+    <script type="text/javascript">
+        alert('<?php echo $registrationSuccess; ?>');
+    </script>
+<?php endif; ?>
+
+<?php if (isset($registrationError)) : ?>
+    <script type="text/javascript">
+        alert('<?php echo $registrationError; ?>');
+    </script>
+<?php endif; ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
