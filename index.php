@@ -24,7 +24,6 @@ if (isset($_POST['login'])) {
     if ($row && $row['password'] == $password) {
         $_SESSION['patientSession'] = $row['icPatient'];
         header("Location: https://clinica.azurewebsites.net/patient/patient.php");
-        exit();
     } else {
         echo '<script>alert("wrong input");</script>';
     }
