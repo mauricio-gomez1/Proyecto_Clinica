@@ -1,23 +1,22 @@
 <?php
 session_start();
-include_once '../assets/conn/dbconnect.php';
-if(!isset($_SESSION['patientSession']))
-{
-header("Location: ../index.php");
+include_once 'assets/conn/dbconnect.php';
+
+if (!isset($_SESSION['patientSession'])) {
+    header("Location: ../index.php");
+    exit();
 }
 
 $usersession = $_SESSION['patientSession'];
 
+$res = mysqli_query($con, "SELECT * FROM patient WHERE icPatient='$usersession'");
 
-$res=mysqli_query($con,"SELECT * FROM patient WHERE icPatient=".$usersession);
+if (!$res) {
+    echo mysqli_error($con);
+}
 
-if ($res===false) {
-	echo mysql_error();
-} 
-
-$userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
+$userRow = mysqli_fetch_array($res, MYSQLI_ASSOC);
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">

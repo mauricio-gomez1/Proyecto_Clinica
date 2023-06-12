@@ -19,7 +19,7 @@ if (isset($_POST['login'])) {
 
     if ($row && $row['password'] == $password) {
         $_SESSION['patientSession'] = $row['icPatient'];
-        header("Location: /patient/patient.php");
+        header("Location: patient/patient.php");
         exit();
     } else {
         $loginError = "Invalid IC number or password.";
