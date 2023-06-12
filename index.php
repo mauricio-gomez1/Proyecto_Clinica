@@ -27,7 +27,7 @@ $_SESSION['patientSession'] = $row['icPatient'];
 alert('Login Success');
 </script>
 <?php
-echo '<script>window.location.href = "https://clinica.azurewebsites.net/patient/patient.php";</script>';
+echo '<script>window.location.href = "../patient/patient.php";</script>';
 
 
 } else {
