@@ -27,8 +27,7 @@ $_SESSION['patientSession'] = $row['icPatient'];
 alert('Login Success');
 </script>
 <?php
-echo '<script>window.location.href = "../patient/patient.php";</script>';
-
+header("Location: /patient/patient.php");
 
 } else {
 ?>
