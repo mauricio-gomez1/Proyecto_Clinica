@@ -8,25 +8,35 @@ include_once 'assets/conn/dbconnect.php';
 <!-- check session -->
 <?php
 session_start();
-
-if (isset($_SESSION['patientSession']) && !empty($_SESSION['patientSession'])) {
-    header("Location: patient/patient.php");
-    exit();
+// session_destroy();
+if (isset($_SESSION['patientSession']) != "") {
+header("Location: patient/patient.php");
 }
+if (isset($_POST['login']))
+{
+$icPatient = mysqli_real_escape_string($con,$_POST['icPatient']);
+$password  = mysqli_real_escape_string($con,$_POST['password']);
 
-if (isset($_POST['login'])) {
-    $icPatient = mysqli_real_escape_string($con, $_POST['icPatient']);
-    $password  = mysqli_real_escape_string($con, $_POST['password']);
+$res = mysqli_query($con,"SELECT * FROM patient WHERE icPatient = '$icPatient'");
+$row=mysqli_fetch_array($res,MYSQLI_ASSOC);
+if ($row['password'] == $password)
+{
+$_SESSION['patientSession'] = $row['icPatient'];
+?>
+<script type="text/javascript">
+alert('Login Success');
+</script>
+<?php
+echo '<script>window.location.href = "https://clinica.azurewebsites.net/patient/patient.php";</script>';
 
-    $res = mysqli_query($con, "SELECT * FROM patient WHERE icPatient = '$icPatient'");
-    $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
 
-    if ($row && $row['password'] == $password) {
-        $_SESSION['patientSession'] = $row['icPatient'];
-        header("Location: https://clinica.azurewebsites.net/patient/patient.php");
-    } else {
-        echo '<script>alert("wrong input");</script>';
-    }
+} else {
+?>
+<script>
+alert('wrong input ');
+</script>
+<?php
+}
 }
 ?>
 <!-- register -->
