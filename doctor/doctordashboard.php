@@ -2,10 +2,7 @@
 session_start();
 include_once '../assets/conn/dbconnect.php';
 // include_once 'connection/server.php';
-if(!isset($_SESSION['doctorSession']))
-{
-header("Location: ../index.php");
-}
+
 $usersession = $_SESSION['doctorSession'];
 $res=mysqli_query($con,"SELECT * FROM doctor WHERE doctorId=".$usersession);
 $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
