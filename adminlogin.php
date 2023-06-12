@@ -22,7 +22,7 @@ $_SESSION['doctorSession'] = $row['doctorId'];
 alert('Login Success');
 </script>
 <?php
-header("Location: /doctordashboard.php");
+header("Location: /doctor/doctordashboard.php");
 exit();
 } else {
 ?>
