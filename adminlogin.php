@@ -1,6 +1,7 @@
 <?php
 include_once 'assets/conn/dbconnect.php';
-
+?>
+<?php
 session_start();
 if (isset($_SESSION['doctorSession'])) {
     header("Location: doctor/doctordashboard.php");
@@ -15,7 +16,7 @@ if (isset($_POST['login'])) {
     $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
 
     if ($row['password'] == $password) {
-        $_SESSION['patientSession'] = $row['doctorId'];
+        $_SESSION['doctorSession'] = $row['doctorId'];
         header("Location: /doctor/doctordashboard.php");
         exit;
     } else {
