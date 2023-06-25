@@ -5,23 +5,17 @@ include_once 'assets/conn/dbconnect.php';
 <?php
 session_start();
 
-if (isset($_SESSION['patientSession'])) {
-    header("Location: patient/patient.php");
-}
-
 if (isset($_POST['login'])) {
     $icPatient = mysqli_real_escape_string($con, $_POST['icPatient']);
     $password = mysqli_real_escape_string($con, $_POST['password']);
 
     $res = mysqli_query($con, "SELECT * FROM patient WHERE icPatient = '$icPatient'");
     $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
-    
+
     if ($row['password'] == $password) {
         $_SESSION['patientSession'] = $row['icPatient'];
-        echo '<script type="text/javascript">';
-        echo 'alert("Login Success");';
-        echo '</script>';
         header("Location: /patient/patient.php");
+        exit; // Asegúrate de usar exit después de la redirección
     } else {
         echo '<script>';
         echo 'alert("Wrong input");';
@@ -45,20 +39,21 @@ if (isset($_POST['signup'])) {
 
     $query = "INSERT INTO patient (icPatient, password, patientFirstName, patientLastName, patientDOB, patientGender, patientEmail)
               VALUES ('$icPatient', '$password', '$patientFirstName', '$patientLastName', '$patientDOB', '$patientGender', '$patientEmail')";
-    
+
     $result = mysqli_query($con, $query);
 
     if ($result) {
-        echo '<script type="text/javascript">';
+        echo '<script>';
         echo 'alert("Register success. Please Login to make an appointment.");';
         echo '</script>';
     } else {
-        echo '<script type="text/javascript">';
+        echo '<script>';
         echo 'alert("User already registered. Please try again.");';
         echo '</script>';
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
