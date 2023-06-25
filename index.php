@@ -42,11 +42,8 @@ if (isset($_POST['signup'])) {
         echo 'alert("User already registered. Please try again.");';
         echo '</script>';
     } else {
-        // Encriptar la contraseña
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
         $query = "INSERT INTO patient (icPatient, password, patientFirstName, patientLastName, patientDOB, patientGender, patientEmail)
-                  VALUES ('$icPatient', '$hashedPassword', '$patientFirstName', '$patientLastName', '$patientDOB', '$patientGender', '$patientEmail')";
+                  VALUES ('$icPatient', '$password', '$patientFirstName', '$patientLastName', '$patientDOB', '$patientGender', '$patientEmail')";
     
         $result = mysqli_query($con, $query);
 
@@ -62,6 +59,7 @@ if (isset($_POST['signup'])) {
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
