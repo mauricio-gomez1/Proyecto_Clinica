@@ -1,8 +1,6 @@
 <?php
 include_once 'assets/conn/dbconnect.php';
-
 session_start();
-
 if (isset($_SESSION['doctorSession'])) {
     header("Location: doctor/doctordashboard.php");
     exit();
@@ -12,18 +10,15 @@ if (isset($_POST['login'])) {
     $doctorId = mysqli_real_escape_string($con, $_POST['doctorId']);
     $password = mysqli_real_escape_string($con, $_POST['password']);
 
-    $stmt = $con->prepare("SELECT * FROM doctor WHERE doctorId = ?");
-    $stmt->bind_param("s", $doctorId);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $row = $result->fetch_assoc();
+    $res = mysqli_query($con, "SELECT * FROM doctor WHERE doctorId = '$doctorId'");
+    $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
 
     if ($row && password_verify($password, $row['password'])) {
         $_SESSION['doctorSession'] = $row['doctorId'];
         echo '<script type="text/javascript">';
         echo 'alert("Login Success");';
+        echo 'window.location.href = "doctor/doctordashboard.php";'; // Redireccionar utilizando JavaScript
         echo '</script>';
-        header("Refresh: 0; URL=doctor/doctordashboard.php");
         exit();
     } else {
         echo '<script type="text/javascript">';
