@@ -34,22 +34,35 @@ if (isset($_POST['signup'])) {
     $patientDOB = $year . "-" . $month . "-" . $day;
     $patientGender = mysqli_real_escape_string($con, $_POST['patientGender']);
 
-    $query = "INSERT INTO patient (icPatient, password, patientFirstName, patientLastName, patientDOB, patientGender, patientEmail)
-              VALUES ('$icPatient', '$password', '$patientFirstName', '$patientLastName', '$patientDOB', '$patientGender', '$patientEmail')";
-    
-    $result = mysqli_query($con, $query);
-
-    if ($result) {
-        echo '<script type="text/javascript">';
-        echo 'alert("Register success. Please Login to make an appointment.");';
-        echo '</script>';
-    } else {
+    // Verificar si el paciente ya está registrado
+    $existingQuery = "SELECT * FROM patient WHERE icPatient = '$icPatient'";
+    $existingResult = mysqli_query($con, $existingQuery);
+    if (mysqli_num_rows($existingResult) > 0) {
         echo '<script type="text/javascript">';
         echo 'alert("User already registered. Please try again.");';
         echo '</script>';
+    } else {
+        // Encriptar la contraseña
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+        $query = "INSERT INTO patient (icPatient, password, patientFirstName, patientLastName, patientDOB, patientGender, patientEmail)
+                  VALUES ('$icPatient', '$hashedPassword', '$patientFirstName', '$patientLastName', '$patientDOB', '$patientGender', '$patientEmail')";
+    
+        $result = mysqli_query($con, $query);
+
+        if ($result) {
+            echo '<script type="text/javascript">';
+            echo 'alert("Register success. Please Login to make an appointment.");';
+            echo '</script>';
+        } else {
+            echo '<script type="text/javascript">';
+            echo 'alert("Error registering user. Please try again.");';
+            echo '</script>';
+        }
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
