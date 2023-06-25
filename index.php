@@ -140,7 +140,7 @@ alert('User already registered. Please try again');
                                                     <input type="password" class="form-control" name="password" placeholder="Contraseña" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <button type="submit" name="login" id="login" class="btn btn-primary btn-block">Iniciar Sesion</button>
+                                                    <button type="submit"  name="login" id="login" class="btn btn-primary btn-block">Iniciar Sesion</button>
                                                 </div>
                                             </form>
                                         </div>
