@@ -15,7 +15,7 @@ if (isset($_POST['login'])) {
 
     if ($row && password_verify($password, $row['password'])) {
         $_SESSION['doctorSession'] = $row['doctorId'];
-        header("Location: /doctor/doictordashboard.php");
+        header("Location: /doctor/doctordashboard.php");
         exit;
     } else {
         echo '<script type="text/javascript">';
