@@ -11,7 +11,7 @@ if (isset($_POST['login'])) {
 
     if ($row['password'] == $password) {
         $_SESSION['patientSession'] = $row['icPatient'];
-        header("Location: /doctor/doctorsdashboard.php");
+        header("Location: /doctor/doctordashboard.php");
         exit;
     } else {
         echo '<script>';
