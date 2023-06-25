@@ -11,9 +11,6 @@ if (!$res) {
 die("Error running $sql: " . mysqli_error());
 }
 
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
