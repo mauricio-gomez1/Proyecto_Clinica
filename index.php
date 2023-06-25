@@ -14,7 +14,7 @@ if (isset($_POST['login'])) {
 
     if ($row['password'] == $password) {
         $_SESSION['patientSession'] = $row['icPatient'];
-        echo '<script>window.location.href = "https://clinica.azurewebsites.net/patient/patient.php";</script>';
+        echo '<script>window.location.href = "/patient/patient.php"";</script>';
         exit; // Asegúrate de usar exit después de la redirección
     } else {
         echo '<script>';
