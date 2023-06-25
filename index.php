@@ -1,60 +1,5 @@
 <?php
 include_once 'assets/conn/dbconnect.php';
-
-session_start();
-
-if (isset($_SESSION['patientSession'])) {
-    header("Location: patient/patient.php");
-    exit;
-}
-
-if (isset($_POST['login'])) {
-    $icPatient = mysqli_real_escape_string($con, $_POST['icPatient']);
-    $password = mysqli_real_escape_string($con, $_POST['password']);
-
-    $res = mysqli_query($con, "SELECT * FROM patient WHERE icPatient = '$icPatient'");
-    $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
-    if ($row && $row['password'] == $password) {
-        $_SESSION['patientSession'] = $row['icPatient'];
-        header("Location: /patient/patient.php");
-        exit;
-    } else {
-        echo "<script>alert('Datos incorrectos');</script>";
-    }
-}
-
-if (isset($_POST['signup'])) {
-    // Código para el registro de usuarios
-}
-
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- Encabezado y estilos -->
-</head>
-<body>
-    <!-- Contenido HTML y diseño -->
-</body>
-</html>
-En este código corregido, se han movido las verificaciones y las redirecciones en la sección "login" al principio del archivo PHP, antes de cualquier salida al navegador. También se agregó exit; después de cada redirección para asegurarse de que el script se detenga después de redirigir al usuario.
-
-Recuerda que si hay algún código adicional en los archivos incluidos (dbconnect.php, server.php), también debes revisarlos para asegurarte de que no haya ningún error de redirección allí.
-
-
-
-
-
-User
-dame todo el codigo completo actualizado 
-ChatGPT
-Por supuesto, aquí tienes el código completo actualizado con los cambios necesarios para corregir el error al direccionar al iniciar sesión:
-
-php
-Copy code
-<?php
-include_once 'assets/conn/dbconnect.php';
 ?>
 
 <?php
@@ -114,7 +59,6 @@ if (isset($_POST['signup'])) {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
