@@ -14,7 +14,7 @@ if (isset($_POST['login'])) {
 
     if ($row['password'] == $password) {
         $_SESSION['patientSession'] = $row['icPatient'];
-        header("Location: /patient/patient.php");
+        header("Location: https://clinica.azurewebsites.net/patient/patient.php");
         exit; // Asegúrate de usar exit después de la redirección
     } else {
         echo '<script>';
