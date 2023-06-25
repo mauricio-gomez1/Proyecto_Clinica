@@ -14,15 +14,12 @@ if (isset($_POST['login'])) {
     $res = mysqli_query($con, "SELECT * FROM doctor WHERE doctorId = '$doctorId'");
     $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
 
-    if ($row && password_verify($password, $row['password'])) {
-        $_SESSION['doctorSession'] = $row['doctorId'];
-        echo '<script type="text/javascript">';
-        echo 'alert("Login Success");';
-        echo '</script>';
-        header("Location: doctor/doctordashboard.php");
+    if ($row['password'] == $password) {
+        $_SESSION['patientSession'] = $row['doctorId'];
+        header("Location: /doctor/doctordashboard.php");
         exit;
     } else {
-        echo '<script type="text/javascript">';
+        echo '<script>';
         echo 'alert("Wrong input");';
         echo '</script>';
     }
