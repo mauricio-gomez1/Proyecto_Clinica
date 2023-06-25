@@ -4,7 +4,7 @@ include_once 'assets/conn/dbconnect.php';
 session_start();
 if (isset($_SESSION['doctorSession'])) {
     header("Location: doctor/doctordashboard.php");
-    exit();
+    exit;
 }
 
 if (isset($_POST['login'])) {
@@ -16,22 +16,19 @@ if (isset($_POST['login'])) {
 
     if ($row && password_verify($password, $row['password'])) {
         $_SESSION['doctorSession'] = $row['doctorId'];
-        ?>
-        <script type="text/javascript">
-            alert('Login Success');
-        </script>
-        <?php
+        echo '<script type="text/javascript">';
+        echo 'alert("Login Success");';
+        echo '</script>';
         header("Location: doctor/doctordashboard.php");
-        exit();
+        exit;
     } else {
-        ?>
-        <script type="text/javascript">
-            alert("Wrong input");
-        </script>
-        <?php
+        echo '<script type="text/javascript">';
+        echo 'alert("Wrong input");';
+        echo '</script>';
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
