@@ -1,10 +1,8 @@
 <?php
 include_once 'assets/conn/dbconnect.php';
 ?>
-
 <?php
 session_start();
-
 if (isset($_POST['login'])) {
     $icPatient = mysqli_real_escape_string($con, $_POST['icPatient']);
     $password = mysqli_real_escape_string($con, $_POST['password']);
@@ -14,7 +12,7 @@ if (isset($_POST['login'])) {
 
     if ($row['password'] == $password) {
         $_SESSION['patientSession'] = $row['icPatient'];
-        echo '<script>window.location.href = "/patient/patient.php"";</script>';
+        header("Location: /patient/patient.php");
         exit; // Asegúrate de usar exit después de la redirección
     } else {
         echo '<script>';
@@ -23,7 +21,6 @@ if (isset($_POST['login'])) {
     }
 }
 ?>
-
 <?php
 if (isset($_POST['signup'])) {
     $patientFirstName = mysqli_real_escape_string($con, $_POST['patientFirstName']);
@@ -53,7 +50,6 @@ if (isset($_POST['signup'])) {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
