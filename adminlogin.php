@@ -2,11 +2,6 @@
 include_once 'assets/conn/dbconnect.php';
 
 session_start();
-if (isset($_SESSION['doctorSession'])) {
-    header("Location: doctor/doctordashboard.php");
-    exit;
-}
-
 if (isset($_POST['login'])) {
     $doctorId = mysqli_real_escape_string($con, $_POST['doctorId']);
     $password = mysqli_real_escape_string($con, $_POST['password']);
@@ -14,15 +9,12 @@ if (isset($_POST['login'])) {
     $res = mysqli_query($con, "SELECT * FROM doctor WHERE doctorId = '$doctorId'");
     $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
 
-    if ($row && password_verify($password, $row['password'])) {
-        $_SESSION['doctorSession'] = $row['doctorId'];
-        echo '<script type="text/javascript">';
-        echo 'alert("Login Success");';
-        echo '</script>';
-        header("Location: doctor/doctordashboard.php");
+    if ($row['password'] == $password) {
+        $_SESSION['patientSession'] = $row['icPatient'];
+        header("Location: /doctor/doctorsdashboard.php");
         exit;
     } else {
-        echo '<script type="text/javascript">';
+        echo '<script>';
         echo 'alert("Wrong input");';
         echo '</script>';
     }
