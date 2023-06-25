@@ -1,24 +1,17 @@
 <?php
 include_once 'assets/conn/dbconnect.php';
 ?>
-
 <?php
 session_start();
-
-if (isset($_SESSION['patientSession'])) {
-    header("Location: patient/patient.php");
-}
-
 if (isset($_POST['login'])) {
     $icPatient = mysqli_real_escape_string($con, $_POST['icPatient']);
     $password = mysqli_real_escape_string($con, $_POST['password']);
 
     $res = mysqli_query($con, "SELECT * FROM patient WHERE icPatient = '$icPatient'");
     $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
-    
+
     if ($row['password'] == $password) {
         $_SESSION['patientSession'] = $row['icPatient'];
-
         header("Location: /patient/patient.php");
         exit;
     } else {
@@ -28,7 +21,6 @@ if (isset($_POST['login'])) {
     }
 }
 ?>
-
 <?php
 if (isset($_POST['signup'])) {
     $patientFirstName = mysqli_real_escape_string($con, $_POST['patientFirstName']);
