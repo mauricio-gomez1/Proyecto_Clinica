@@ -3,7 +3,7 @@ include_once 'assets/conn/dbconnect.php';
 session_start();
 if (isset($_SESSION['doctorSession'])) {
     header("Location: doctor/doctordashboard.php");
-    exit();
+    exit;
 }
 
 if (isset($_POST['login'])) {
@@ -15,11 +15,8 @@ if (isset($_POST['login'])) {
 
     if ($row && password_verify($password, $row['password'])) {
         $_SESSION['doctorSession'] = $row['doctorId'];
-        echo '<script type="text/javascript">';
-        echo 'alert("Login Success");';
-        echo 'window.location.href = "doctor/doctordashboard.php";'; // Redireccionar utilizando JavaScript
-        echo '</script>';
-        exit();
+        header("Location: /doctor/doictordashboard.php");
+        exit;
     } else {
         echo '<script type="text/javascript">';
         echo 'alert("Wrong input");';
