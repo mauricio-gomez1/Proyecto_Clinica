@@ -187,25 +187,25 @@ alert('Added fail. Please try again.');
                                   </label>
                                   <div class="col-sm-10">
                                    <select class="select form-control" id="scheduleday" name="scheduleday" required>
-                                    <option value="Lunes">
+                                    <option value="Monday">
                                     Lunes
                                     </option>
-                                    <option value="Martes">
+                                    <option value="Tuesday">
                                         Martes
                                     </option>
-                                    <option value="Miercoles">
+                                    <option value="Wednesday">
                                         Miercoles
                                     </option>
-                                    <option value="Jueves">
+                                    <option value="Thursday">
                                         Jueves
                                     </option>
-                                    <option value="Viernes">
+                                    <option value="Friday">
                                         Viernes
                                     </option>
-                                    <option value="Sabado">
+                                    <option value="Saturday">
                                         Sabado
                                     </option>
-                                    <option value="Domingo">
+                                    <option value="Sunday">
                                         Domingo
                                     </option>
                                    </select>
