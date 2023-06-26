@@ -44,8 +44,8 @@ if (isset($_POST['signup'])) {
         echo 'alert("User already registered. Please try again.");';
         echo '</script>';
     } else {
-        $query = "INSERT INTO patient (icPatient, password, patientFirstName, patientLastName, patientDOB, patientGender, patientAddress, patientPhone,patientEmail)
-                  VALUES ($icPatient, $password, $patientFirstName, $patientLastName, $patientDOB, $patientGender, $patientAddress, $patientPhone, $patientEmail);";
+        $query = "INSERT INTO patient (icPatient, password, patientFirstName, patientLastName, patientDOB, patientGender, patientAddress, patientPhone, patientEmail)
+                  VALUES ('$icPatient', '$password', '$patientFirstName', '$patientLastName', '$patientDOB', '$patientGender', '$patientAddress', '$patientPhone', '$patientEmail')";
     
         $result = mysqli_query($con, $query);
 
@@ -62,9 +62,6 @@ if (isset($_POST['signup'])) {
     }
 }
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
