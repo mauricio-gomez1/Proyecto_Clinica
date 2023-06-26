@@ -283,10 +283,10 @@ if (isset($_POST['signup'])) {
                                         </div>
                                         <label>Genero : </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="patientGender" value="male" required/>Hombre
+                                            <input type="radio" name="patientGender" value="Hombre" required/>Hombre
                                         </label>
                                         <label class="radio-inline" >
-                                            <input type="radio" name="patientGender" value="female" required/>Mujer
+                                            <input type="radio" name="patientGender" value="Mujer" required/>Mujer
                                         </label>
                                         <br />
                                         <span class="help-block">Al darle click a "Crear mi cuenta" acepta los terminos y condiciones de este servicio.</span>
