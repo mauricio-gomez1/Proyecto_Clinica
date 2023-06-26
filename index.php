@@ -33,6 +33,8 @@ if (isset($_POST['signup'])) {
     $year = mysqli_real_escape_string($con, $_POST['year']);
     $patientDOB = $year . "-" . $month . "-" . $day;
     $patientGender = mysqli_real_escape_string($con, $_POST['patientGender']);
+    $patientAddress = mysqli_real_escape_string($con, $_POST['patientAddress']);
+    $patientPhone = mysqli_real_escape_string($con, $_POST['patientPhone']);
 
     // Verificar si el paciente ya está registrado
     $existingQuery = "SELECT * FROM patient WHERE icPatient = '$icPatient'";
@@ -42,8 +44,8 @@ if (isset($_POST['signup'])) {
         echo 'alert("User already registered. Please try again.");';
         echo '</script>';
     } else {
-        $query = "INSERT INTO patient (icPatient, password, patientFirstName, patientLastName, patientDOB, patientGender, patientEmail)
-                  VALUES ('$icPatient', '$password', '$patientFirstName', '$patientLastName', '$patientDOB', '$patientGender', '$patientEmail')";
+        $query = "INSERT INTO patient (icPatient, password, patientFirstName, patientLastName, patientDOB, patientGender, patientAddress, patientPhone,patientEmail)
+                  VALUES ($icPatient, $password, $patientFirstName, $patientLastName, $patientDOB, $patientGender, $patientAddress, $patientPhone, $patientEmail)";
     
         $result = mysqli_query($con, $query);
 
@@ -175,6 +177,12 @@ if (isset($_POST['signup'])) {
                                         
                                         
                                         <input type="password" name="password" value="" class="form-control input-lg" placeholder="Contraseña"  required/>
+
+                                        <input type="number" name="patientPhone" value="" class="form-control input-lg" placeholder="patientPhone"  required/>
+
+                                        <input type="text" name="patientAddress" value="" class="form-control input-lg" placeholder="patientAddress"  required/>
+
+
                                         <label>Fecha de nacimiento</label>
                                         <div class="row">
                                             
