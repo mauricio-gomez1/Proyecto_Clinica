@@ -178,9 +178,9 @@ if (isset($_POST['signup'])) {
                                         
                                         <input type="password" name="password" value="" class="form-control input-lg" placeholder="Contraseña"  required/>
 
-                                        <input type="number" name="patientPhone" value="" class="form-control input-lg" placeholder="patientPhone"  required/>
+                                        <input type="number" name="patientPhone" value="" class="form-control input-lg" placeholder="Numero de telefono"  required/>
 
-                                        <input type="text" name="patientAddress" value="" class="form-control input-lg" placeholder="patientAddress"  required/>
+                                        <input type="text" name="patientAddress" value="" class="form-control input-lg" placeholder="Direccion"  required/>
 
 
                                         <label>Fecha de nacimiento</label>
