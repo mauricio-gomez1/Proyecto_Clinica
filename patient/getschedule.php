@@ -37,7 +37,7 @@ die("Error running $sql: " . mysqli_error());
                     <?php
                     // $avail=null;
                     // $btnclick="";
-                    if ($row['bookAvail']!='disponible') {
+                    if ($row['bookAvail']!='available') {
                     $avail="danger";
                     $btnstate="disabled";
                     $btnclick="danger";
