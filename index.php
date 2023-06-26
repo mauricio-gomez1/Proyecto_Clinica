@@ -54,11 +54,13 @@ if (isset($_POST['signup'])) {
         } else {
             echo '<script type="text/javascript">';
             echo 'alert("Error registering user. Please try again.");';
+            echo 'console.log("SQL Error: ' . mysqli_error($con) . '");'; // Display the SQL error
             echo '</script>';
         }
     }
 }
 ?>
+
 
 
 <!DOCTYPE html>
