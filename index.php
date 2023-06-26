@@ -45,7 +45,7 @@ if (isset($_POST['signup'])) {
         echo '</script>';
     } else {
         $query = "INSERT INTO patient (icPatient, password, patientFirstName, patientLastName, patientDOB, patientGender, patientAddress, patientPhone,patientEmail)
-                  VALUES ($icPatient, $password, $patientFirstName, $patientLastName, $patientDOB, $patientGender, $patientAddress, $patientPhone, $patientEmail)";
+                  VALUES ($icPatient, $password, $patientFirstName, $patientLastName, $patientDOB, $patientGender, $patientAddress, $patientPhone, $patientEmail);";
     
         $result = mysqli_query($con, $query);
 
