@@ -255,10 +255,10 @@ alert('Added fail. Please try again.');
                                   </label>
                                   <div class="col-sm-10">
                                    <select class="select form-control" id="bookavail" name="bookavail" required>
-                                    <option value="available">
+                                    <option value="disponible">
                                     Con Disponibilidad
                                     </option>
-                                    <option value="notavail">
+                                    <option value="nodisponible">
                                     Sin Disponibilidad
                                     </option>
                                    </select>

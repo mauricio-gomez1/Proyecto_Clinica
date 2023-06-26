@@ -37,7 +37,7 @@ die("Error running $sql: " . mysqli_error());
                     <?php
                     // $avail=null;
                     // $btnclick="";
-                    if ($row['bookAvail']!='available') {
+                    if ($row['bookAvail']!='disponible') {
                     $avail="danger";
                     $btnstate="disabled";
                     $btnclick="danger";
@@ -48,11 +48,6 @@ die("Error running $sql: " . mysqli_error());
                     }
 
                    
-                    // if ($rowapp['bookAvail']!="available") {
-                    // $btnstate="disabled";
-                    // } else {
-                    // $btnstate="";
-                    // }
                     echo "<td>" . $row['scheduleId'] . "</td>";
                     echo "<td>" . $row['scheduleDay'] . "</td>";
                     echo "<td>" . $row['scheduleDate'] . "</td>";
