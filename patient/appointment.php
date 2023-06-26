@@ -21,7 +21,7 @@ $patientIc = mysqli_real_escape_string($con,$userRow['icPatient']);
 $scheduleid = mysqli_real_escape_string($con,$appid);
 $symptom = mysqli_real_escape_string($con,$_POST['symptom']);
 $comment = mysqli_real_escape_string($con,$_POST['comment']);
-$avail = "No Disponible";
+$avail = "notavail";
 
 
 $query = "INSERT INTO appointment (  patientIc , scheduleId , appSymptom , appComment  )
@@ -130,7 +130,7 @@ header("Location: patient/patient.php");
 						<div class="col-md-3 col-sm-3">
 							
 							<div class="user-wrapper">
-								<img src="https://e7.pngegg.com/pngimages/178/595/png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black.png" class="img-responsive" />
+								<img src="assets/img/1.jpg" class="img-responsive" />
 								<div class="description">
 									<h4><?php echo $userRow['patientFirstName']; ?> <?php echo $userRow['patientLastName']; ?></h4>
 									<p>
