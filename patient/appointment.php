@@ -21,7 +21,7 @@ $patientIc = mysqli_real_escape_string($con,$userRow['icPatient']);
 $scheduleid = mysqli_real_escape_string($con,$appid);
 $symptom = mysqli_real_escape_string($con,$_POST['symptom']);
 $comment = mysqli_real_escape_string($con,$_POST['comment']);
-$avail = "nodisponible";
+$avail = "notavail";
 
 
 $query = "INSERT INTO appointment (  patientIc , scheduleId , appSymptom , appComment  )

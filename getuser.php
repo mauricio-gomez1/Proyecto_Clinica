@@ -11,9 +11,6 @@ if (!$res) {
 die("Error running $sql: " . mysqli_error());
 }
 
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,7 +47,7 @@ die("Error running $sql: " . mysqli_error());
                 <?php
 
                 // $avail=null;
-                if ($row['bookAvail']!='disponible') {
+                if ($row['bookAvail']!='available') {
                 $avail="danger";
                 } else {
                 $avail="primary";

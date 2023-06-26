@@ -187,25 +187,25 @@ alert('Added fail. Please try again.');
                                   </label>
                                   <div class="col-sm-10">
                                    <select class="select form-control" id="scheduleday" name="scheduleday" required>
-                                    <option value="Monday">
+                                    <option value="Lunes">
                                     Lunes
                                     </option>
-                                    <option value="Tuesday">
+                                    <option value="Martes">
                                         Martes
                                     </option>
-                                    <option value="Wednesday">
+                                    <option value="Miercoles">
                                         Miercoles
                                     </option>
-                                    <option value="Thursday">
+                                    <option value="Jueves">
                                         Jueves
                                     </option>
-                                    <option value="Friday">
+                                    <option value="Viernes">
                                         Viernes
                                     </option>
-                                    <option value="Saturday">
+                                    <option value="Sabado">
                                         Sabado
                                     </option>
-                                    <option value="Sunday">
+                                    <option value="Domingo">
                                         Domingo
                                     </option>
                                    </select>
@@ -255,10 +255,10 @@ alert('Added fail. Please try again.');
                                   </label>
                                   <div class="col-sm-10">
                                    <select class="select form-control" id="bookavail" name="bookavail" required>
-                                    <option value="disponible">
+                                    <option value="available">
                                     Con Disponibilidad
                                     </option>
-                                    <option value="nodisponible">
+                                    <option value="notavail">
                                     Sin Disponibilidad
                                     </option>
                                    </select>
