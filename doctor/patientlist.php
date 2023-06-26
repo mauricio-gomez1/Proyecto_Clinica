@@ -163,7 +163,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                        echo "</table>";
                        echo "<div class='panel panel-default'>";
                        echo "<div class='col-md-offset-3 pull-right'>";
-                       echo "<button class='btn btn-primary' type='submit' value='Submit' name='submit'>Update</button>";
+                       echo "<button class='btn btn-primary' type='submit' value='Submit' name='submit'>Actualizar</button>";
                         echo "</div>";
                         echo "</div>";
                         ?>
