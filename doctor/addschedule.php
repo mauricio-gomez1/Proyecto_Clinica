@@ -15,13 +15,17 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 if (isset($_POST['submit'])) {
 $date = mysqli_real_escape_string($con,$_POST['date']);
 $scheduleday  = mysqli_real_escape_string($con,$_POST['scheduleday']);
-$starttime     = mysqli_real_escape_string($con,$_POST['starttime']);
-$endtime     = mysqli_real_escape_string($con,$_POST['endtime']);
+$starttime = mysqli_real_escape_string($con,$_POST['starttime']);
+$starttime_datetime = new DateTime($starttime);
+$endtime_datetime = clone $starttime_datetime;
+$endtime_datetime->add(new DateInterval('PT1H'));
+$endtime = $endtime_datetime->format('H:i');
 $bookavail         = mysqli_real_escape_string($con,$_POST['bookavail']);
 
 //INSERT
-$query = " INSERT INTO doctorschedule (  scheduleDate, scheduleDay, startTime, endTime,  bookAvail)
-VALUES ( '$date', '$scheduleday', '$starttime', '$endtime', '$bookavail' ) ";
+$query = " INSERT INTO doctorschedule (scheduleDate, scheduleDay, startTime, endTime, bookAvail)
+           VALUES ('$date', '$scheduleday', '$starttime', '$endtime', '$bookavail' ) ";
+
 
 $result = mysqli_query($con, $query);
 // echo $result;
@@ -242,7 +246,7 @@ alert('Added fail. Please try again.');
                                      <i class="fa fa-clock-o">
                                      </i>
                                     </div>
-                                    <input class="form-control" id="endtime" name="endtime" type="text" required/>
+                                    <input class="form-control" id="endtime" name="endtime" type="text" required disabled/>
                                    </div>
                                   </div>
                                  </div>
