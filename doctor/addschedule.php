@@ -22,8 +22,17 @@ if (isset($_POST['submit'])) {
     $bookavail = mysqli_real_escape_string($con, $_POST['bookavail']);
     
     // Obtener el día de la semana en español
-    setlocale(LC_TIME, 'es_ES');
-    $scheduleday = strftime('%A', strtotime($date));
+    $days_es = array(
+        'Sunday' => 'Domingo',
+        'Monday' => 'Lunes',
+        'Tuesday' => 'Martes',
+        'Wednesday' => 'Miércoles',
+        'Thursday' => 'Jueves',
+        'Friday' => 'Viernes',
+        'Saturday' => 'Sábado'
+    );
+    
+    $scheduleday = $days_es[date('l', strtotime($date))];
     
     // INSERT
     $query = "INSERT INTO doctorschedule (scheduleDate, scheduleDay, startTime, endTime, bookAvail)
@@ -46,9 +55,8 @@ if (isset($_POST['submit'])) {
     }
 }
 
+
 ?>
-
-
 
 ?>
 <!DOCTYPE html>
