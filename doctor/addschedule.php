@@ -21,6 +21,8 @@ if (isset($_POST['submit'])) {
     $endtime = $endtime_datetime->format('H:i');
     $bookavail = mysqli_real_escape_string($con, $_POST['bookavail']);
     
+
+    
     // Obtener el día de la semana en español
     $days_es = array(
         'Sunday' => 'Domingo',
@@ -173,6 +175,12 @@ if (isset($_POST['submit'])) {
                                <div class="col-md-12 col-sm-12 col-xs-12">
                                 <form class="form-horizontal" method="post">
                                  <div class="form-group form-group-lg">
+                                  <label class="control-label col-sm-2 requiredField" for="date">
+                                   Fecha
+                                   <span class="asteriskField">
+                                    *
+                                   </span>
+                                  </label>
                                   <div class="col-sm-10">
                                    <div class="input-group">
                                     <div class="input-group-addon">
@@ -183,12 +191,7 @@ if (isset($_POST['submit'])) {
                                    </div>
                                   </div>
                                  </div>
-                                 <div class="form-group form-group-lg">
-
-                                <div class="col-sm-10">
-
-                                  </div>
-                                 </div>
+                                 
                                  <div class="form-group form-group-lg">
                                   <label class="control-label col-sm-2 requiredField" for="starttime">
                                    Hora de inicio
@@ -207,23 +210,7 @@ if (isset($_POST['submit'])) {
                                    </div>
                                   </div>
                                  </div>
-                                 <div class="form-group form-group-lg">
-                                  <label class="control-label col-sm-2 requiredField" for="endtime">
-                                   Hora de finalizacion
-                                   <span class="asteriskField">
-                                    *
-                                   </span>
-                                  </label>
-                                  <div class="col-sm-10">
-                                   <div class="input-group clockpicker"  data-align="top" data-autoclose="true">
-                                    <div class="input-group-addon">
-                                     <i class="fa fa-clock-o">
-                                     </i>
-                                    </div>
-                                    <input class="form-control" id="endtime" name="endtime" type="text" required/>
-                                   </div>
-                                  </div>
-                                 </div>
+                                
                                  <div class="form-group form-group-lg">
                                   <label class="control-label col-sm-2 requiredField" for="bookavail">
                                    Disponibilidad de reserva
@@ -280,6 +267,7 @@ if (isset($_POST['submit'])) {
                                 <tr class="filters">
                                     <th><input type="text" class="form-control" placeholder="Id" disabled></th>
                                     <th><input type="text" class="form-control" placeholder="Fecha" disabled></th>
+                                    <th><input type="text" class="form-control" placeholder="Dia" disabled></th>
                                     <th><input type="text" class="form-control" placeholder="Inicio" disabled></th>
                                     <th><input type="text" class="form-control" placeholder="Fin" disabled></th>
                                     <th><input type="text" class="form-control" placeholder="Reservacion" disabled></th>
