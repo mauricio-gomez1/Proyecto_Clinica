@@ -13,40 +13,39 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 
 
 if (isset($_POST['submit'])) {
-$date = mysqli_real_escape_string($con,$_POST['date']);
-$scheduleday  = mysqli_real_escape_string($con,$_POST['scheduleday']);
-$starttime = mysqli_real_escape_string($con,$_POST['starttime']);
-$starttime_datetime = new DateTime($starttime);
-$endtime_datetime = clone $starttime_datetime;
-$endtime_datetime->add(new DateInterval('PT1H'));
-$endtime = $endtime_datetime->format('H:i');
-$bookavail         = mysqli_real_escape_string($con,$_POST['bookavail']);
-
-//INSERT
-$query = " INSERT INTO doctorschedule (scheduleDate, scheduleDay, startTime, endTime, bookAvail)
-           VALUES ('$date', '$scheduleday', '$starttime', '$endtime', '$bookavail' ) ";
-
-
-$result = mysqli_query($con, $query);
-// echo $result;
-if( $result )
-{
-?>
-<script type="text/javascript">
-alert('Schedule added successfully.');
-</script>
-<?php
+    $date = mysqli_real_escape_string($con, $_POST['date']);
+    $starttime = mysqli_real_escape_string($con, $_POST['starttime']);
+    $starttime_datetime = new DateTime($starttime);
+    $endtime_datetime = clone $starttime_datetime;
+    $endtime_datetime->add(new DateInterval('PT1H'));
+    $endtime = $endtime_datetime->format('H:i');
+    $bookavail = mysqli_real_escape_string($con, $_POST['bookavail']);
+    
+    // Obtener el día de la semana en español
+    setlocale(LC_TIME, 'es_ES');
+    $scheduleday = strftime('%A', strtotime($date));
+    
+    // INSERT
+    $query = "INSERT INTO doctorschedule (scheduleDate, scheduleDay, startTime, endTime, bookAvail)
+              VALUES ('$date', '$scheduleday', '$starttime', '$endtime', '$bookavail' ) ";
+    
+    $result = mysqli_query($con, $query);
+    
+    if ($result) {
+        ?>
+        <script type="text/javascript">
+            alert('Schedule added successfully.');
+        </script>
+        <?php
+    } else {
+        ?>
+        <script type="text/javascript">
+            alert('Added fail. Please try again.');
+        </script>
+        <?php
+    }
 }
-else
-{
-?>
-<script type="text/javascript">
-alert('Added fail. Please try again.');
-</script>
-<?php
-}
 
-}
 ?>
 
 
