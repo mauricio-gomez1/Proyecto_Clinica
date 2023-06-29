@@ -1,7 +1,6 @@
 <?php
 include_once 'assets/conn/dbconnect.php';
 ?>
-
 <?php
 session_start();
 if (isset($_POST['login'])) {
@@ -22,7 +21,6 @@ if (isset($_POST['login'])) {
     }
 }
 ?>
-
 <?php
 if (isset($_POST['signup'])) {
     $patientFirstName = mysqli_real_escape_string($con, $_POST['patientFirstName']);
@@ -43,31 +41,9 @@ if (isset($_POST['signup'])) {
     $existingResult = mysqli_query($con, $existingQuery);
     if (mysqli_num_rows($existingResult) > 0) {
         echo '<script type="text/javascript">';
-        echo 'alert("User already registered. Please try again.");';
+        echo 'alert("Usuario ya registrado.");';
         echo '</script>';
     } else {
-        // Validar el formato de los campos
-        if (!validateLetters($patientFirstName) || !validateLetters($patientLastName)) {
-            echo '<script type="text/javascript">';
-            echo 'alert("El nombre y apellido deben contener solo letras.");';
-            echo '</script>';
-            return;
-        }
-
-        if (!validateEmail($patientEmail)) {
-            echo '<script type="text/javascript">';
-            echo 'alert("Por favor, ingrese un correo electrónico válido.");';
-            echo '</script>';
-            return;
-        }
-
-        if (!validateNumbers($icPatient)) {
-            echo '<script type="text/javascript">';
-            echo 'alert("El número de IC debe contener solo números.");';
-            echo '</script>';
-            return;
-        }
-
         $query = "INSERT INTO patient (icPatient, password, patientFirstName, patientLastName, patientDOB, patientGender, patientAddress, patientPhone, patientEmail)
                   VALUES ('$icPatient', '$password', '$patientFirstName', '$patientLastName', '$patientDOB', '$patientGender', '$patientAddress', '$patientPhone', '$patientEmail')";
     
@@ -75,102 +51,16 @@ if (isset($_POST['signup'])) {
 
         if ($result) {
             echo '<script type="text/javascript">';
-            echo 'alert("Register success. Please Login to make an appointment.");';
+            echo 'alert("Registro exitoso, Inicia sesion para reservar cita.");';
             echo '</script>';
         } else {
             echo '<script type="text/javascript">';
-            echo 'alert("Error registering user. Please try again.");';
+            echo 'alert("Error al registrar usuario. Intentalo de nuevo");';
             echo 'console.log("SQL Error: ' . mysqli_error($con) . '");'; // Display the SQL error
             echo '</script>';
         }
     }
 }
-?>
-
-<script>
-// Validación de solo letras
-function validateLetters(input) {
-    var regex = /^[A-Za-z\s]+$/;
-    return regex.test(input);
-}
-
-// Validación de solo números
-function validateNumbers(input) {
-    var regex = /^\d+$/;
-    return regex.test(input);
-}
-
-// Validación de correo electrónico
-function validateEmail(input) {
-    var regex = /\S+@\S+\.\S+/;
-    return regex.test(input);
-}
-
-// Obtener referencia a los elementos del formulario
-var loginForm = document.getElementById("loginForm");
-var signupForm = document.getElementById("signupForm");
-
-// Agregar un evento de escucha para el envío del formulario de inicio de sesión
-loginForm.addEventListener("submit", function(event) {
-    event.preventDefault(); // Evitar que se envíe el formulario automáticamente
-
-    // Obtener los valores de los campos del formulario
-    var icPatient = document.getElementById("icPatient").value;
-    var password = document.getElementById("password").value;
-
-    // Validar los campos
-    if (icPatient.trim() === "" || password.trim() === "") {
-        alert("Por favor, complete todos los campos.");
-        return;
-    }
-
-    // Enviar el formulario si todos los campos son válidos
-    this.submit();
-});
-
-// Agregar un evento de escucha para el envío del formulario de registro
-signupForm.addEventListener("submit", function(event) {
-    event.preventDefault(); // Evitar que se envíe el formulario automáticamente
-
-    // Obtener los valores de los campos del formulario
-    var patientFirstName = document.getElementById("patientFirstName").value;
-    var patientLastName = document.getElementById("patientLastName").value;
-    var patientEmail = document.getElementById("patientEmail").value;
-    var icPatient = document.getElementById("icPatient").value;
-    var password = document.getElementById("password").value;
-    var patientPhone = document.getElementById("patientPhone").value;
-    var patientAddress = document.getElementById("patientAddress").value;
-    var month = document.getElementById("month").value;
-    var day = document.getElementById("day").value;
-    var year = document.getElementById("year").value;
-
-    // Validar los campos
-    if (patientFirstName.trim() === "" || patientLastName.trim() === "" || patientEmail.trim() === "" || icPatient.trim() === "" || password.trim() === "" || patientPhone.trim() === "" || patientAddress.trim() === "" || month === "" || day === "" || year === "") {
-        alert("Por favor, complete todos los campos.");
-        return;
-    }
-
-    // Validar el formato de los campos
-    if (!validateLetters(patientFirstName) || !validateLetters(patientLastName)) {
-        alert("El nombre y apellido deben contener solo letras.");
-        return;
-    }
-
-    if (!validateEmail(patientEmail)) {
-        alert("Por favor, ingrese un correo electrónico válido.");
-        return;
-    }
-
-    if (!validateNumbers(icPatient)) {
-        alert("El número de IC debe contener solo números.");
-        return;
-    }
-
-    // Enviar el formulario si todos los campos son válidos
-    this.submit();
-});
-</script>
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
