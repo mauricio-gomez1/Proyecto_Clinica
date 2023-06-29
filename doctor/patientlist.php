@@ -75,7 +75,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                             <a href="doctordashboard.php"><i class="fa fa-fw fa-dashboard"></i> Citas</a>
                         </li>
                         <li>
-                            <a href="addschedule.php"><i class="fa fa-fw fa-table"></i> Mis horarios</a>
+                            <a href="addschedule.php"><i class="fa fa-fw fa-table"></i> Mis Horarios</a>
                         </li>
                         <li class="active">
                             <a href="patientlist.php"><i class="fa fa-fw fa-edit"></i> Pacientes</a>
