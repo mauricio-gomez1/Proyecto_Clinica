@@ -107,9 +107,6 @@ if (isset($_POST['signup'])) {
 
                         <!-- <li><a href="adminlogin.php">Admin</a></li> -->
                         <li><a href="#" data-toggle="modal" data-target="#myModal">Registro</a></li>
-                        <li>
-                            <p class="navbar-text">Ya tiene una cuenta?</p>
-                        </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Iniciar Sesion</b> <span class="caret"></span></a>
                             <ul id="login-dp" class="dropdown-menu">
@@ -140,6 +137,33 @@ if (isset($_POST['signup'])) {
             </div>
         </nav>
         <!-- navigation -->
+        <script>
+    function showInvalidMessage(event) {
+        event.target.setCustomValidity('Ingrese solo letras.');
+    }
+
+    function showInvalidNumberMessage(event) {
+        event.target.setCustomValidity('Ingrese solo números.');
+    }
+
+    function resetValidation(event) {
+        event.target.setCustomValidity('');
+    }
+
+    // Agrega los manejadores de eventos a los campos de texto y número
+    var textFields = document.querySelectorAll('input[type="text"]');
+    var numberFields = document.querySelectorAll('input[type="number"]');
+
+    textFields.forEach(function(field) {
+        field.addEventListener('invalid', showInvalidMessage);
+        field.addEventListener('input', resetValidation);
+    });
+
+    numberFields.forEach(function(field) {
+        field.addEventListener('invalid', showInvalidNumberMessage);
+        field.addEventListener('input', resetValidation);
+    });
+</script>
 
         <!-- modal container start -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -162,20 +186,20 @@ if (isset($_POST['signup'])) {
                                         <h4>El primer paso a mejorar su salud mental</h4>
                                         <div class="row">
                                             <div class="col-xs-6 col-md-6">
-                                                <input type="text" name="patientFirstName" value="" class="form-control input-lg" placeholder="Nombre" required />
+                                            <input type="text" name="patientFirstName" pattern="[A-Za-z]+" value="" class="form-control input-lg" placeholder="Nombre" required />
                                             </div>
                                             <div class="col-xs-6 col-md-6">
-                                                <input type="text" name="patientLastName" value="" class="form-control input-lg" placeholder="Apellido" required />
+                                            <input type="text" name="patientLastName" pattern="[A-Za-z]+" value="" class="form-control input-lg" placeholder="Apellido" required />
                                             </div>
                                         </div>
                                         
-                                        <input type="email" name="patientEmail" value="" class="form-control input-lg" placeholder="Email"  required/>
-                                        <input type="number" name="icPatient" value="" class="form-control input-lg" placeholder="Cuenta (solo numeros)"  required/>
+                                        <input type="email" name="patientEmail" value="" class="form-control input-lg" placeholder="Email" required />
+                                        <input type="number" name="icPatient" pattern="[0-9]+" value="" class="form-control input-lg" placeholder="Cuenta (solo números)" required />
                                         
                                         
                                         <input type="password" name="password" value="" class="form-control input-lg" placeholder="Contraseña"  required/>
 
-                                        <input type="number" name="patientPhone" value="" class="form-control input-lg" placeholder="Numero de telefono"  required/>
+                                        <input type="number" name="patientPhone" pattern="[0-9]+" value="" class="form-control input-lg" placeholder="Número de teléfono" required />
 
                                         <input type="text" name="patientAddress" value="" class="form-control input-lg" placeholder="Direccion"  required/>
 
