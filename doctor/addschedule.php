@@ -173,12 +173,6 @@ if (isset($_POST['submit'])) {
                                <div class="col-md-12 col-sm-12 col-xs-12">
                                 <form class="form-horizontal" method="post">
                                  <div class="form-group form-group-lg">
-                                  <label class="control-label col-sm-2 requiredField" for="date">
-                                   Fecha
-                                   <span class="asteriskField">
-                                    *
-                                   </span>
-                                  </label>
                                   <div class="col-sm-10">
                                    <div class="input-group">
                                     <div class="input-group-addon">
@@ -190,36 +184,9 @@ if (isset($_POST['submit'])) {
                                   </div>
                                  </div>
                                  <div class="form-group form-group-lg">
-                                  <label class="control-label col-sm-2 requiredField" for="scheduleday">
-                                   Dia
-                                   <span class="asteriskField">
-                                    *
-                                   </span>
-                                  </label>
-                                  <div class="col-sm-10">
-                                   <select class="select form-control" id="scheduleday" name="scheduleday" required>
-                                    <option value="Lunes">
-                                    Lunes
-                                    </option>
-                                    <option value="Martes">
-                                        Martes
-                                    </option>
-                                    <option value="Miercoles">
-                                        Miercoles
-                                    </option>
-                                    <option value="Jueves">
-                                        Jueves
-                                    </option>
-                                    <option value="Viernes">
-                                        Viernes
-                                    </option>
-                                    <option value="Sabado">
-                                        Sabado
-                                    </option>
-                                    <option value="Domingo">
-                                        Domingo
-                                    </option>
-                                   </select>
+
+                                <div class="col-sm-10">
+
                                   </div>
                                  </div>
                                  <div class="form-group form-group-lg">
@@ -313,7 +280,6 @@ if (isset($_POST['submit'])) {
                                 <tr class="filters">
                                     <th><input type="text" class="form-control" placeholder="Id" disabled></th>
                                     <th><input type="text" class="form-control" placeholder="Fecha" disabled></th>
-                                    <th><input type="text" class="form-control" placeholder="Dia" disabled></th>
                                     <th><input type="text" class="form-control" placeholder="Inicio" disabled></th>
                                     <th><input type="text" class="form-control" placeholder="Fin" disabled></th>
                                     <th><input type="text" class="form-control" placeholder="Reservacion" disabled></th>
