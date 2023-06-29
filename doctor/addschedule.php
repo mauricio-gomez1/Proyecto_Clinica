@@ -1,5 +1,4 @@
-p
-Copy code
+
 <?php
 session_start();
 include_once '../assets/conn/dbconnect.php';
