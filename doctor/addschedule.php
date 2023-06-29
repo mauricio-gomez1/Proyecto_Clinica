@@ -220,7 +220,7 @@ if (isset($_POST['submit'])) {
                                   </label>
                                   <div class="col-sm-10">
                                    <select class="select form-control" id="bookavail" name="bookavail" required>
-                                    <option value="disponoble">
+                                    <option value="disponible">
                                     Con Disponibilidad
                                     </option>
                                     <option value="no disponible">
