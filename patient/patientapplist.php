@@ -123,8 +123,8 @@ echo "<td>" . $userRow['scheduleDay'] . "</td>";
 echo "<td>" . $userRow['scheduleDate'] . "</td>";
 echo "<td>" . $userRow['startTime'] . "</td>";
 echo "<td>" . $userRow['endTime'] . "</td>";
-echo "<td><a href='cancelAppointment.php?appid=".$userRow['appId']."'><button class='btn btn-danger'>Cancelar</button></a></td>";
 echo "<td><a href='invoice.php?appid=".$userRow['appId']."' target='_blank'><span class='glyphicon glyphicon-print' aria-hidden='true'></span></a> </td>";
+echo "<td><a href='cancelAppointment.php?appid=".$userRow['appId']."'><button class='btn btn-danger'>Cancelar</button></a></td>";
 }
 
 echo "</tr>";
