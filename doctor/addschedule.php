@@ -1,25 +1,41 @@
 <?php
 session_start();
 include_once '../assets/conn/dbconnect.php';
-
-if (!isset($_SESSION['doctorSession'])) {
-    header("Location: ../index.php");
+// include_once 'connection/server.php';
+if(!isset($_SESSION['doctorSession']))
+{
+header("Location: ../index.php");
 }
+$usersession = $_SESSION['doctorSession'];
+$res=mysqli_query($con,"SELECT * FROM doctor WHERE doctorId=".$usersession);
+$userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
+// insert
 
-$userSession = $_SESSION['doctorSession'];
-$res = mysqli_query($con, "SELECT * FROM doctor WHERE doctorId = $userSession");
-$userRow = mysqli_fetch_array($res, MYSQLI_ASSOC);
 
+if (isset($_POST['submit'])) {
+$date = mysqli_real_escape_string($con,$_POST['date']);
+$scheduleday  = mysqli_real_escape_string($con,$_POST['scheduleday']);
+$starttime = mysqli_real_escape_string($con,$_POST['starttime']);
+$starttime_datetime = new DateTime($starttime);
+$endtime_datetime = clone $starttime_datetime;
+$endtime_datetime->add(new DateInterval('PT1H'));
+$endtime = $endtime_datetime->format('H:i');
+$bookavail         = mysqli_real_escape_string($con,$_POST['bookavail']);
+
+//INSERT
 if (isset($_POST['submit'])) {
     $date = mysqli_real_escape_string($con, $_POST['date']);
     $scheduleday = date('l', strtotime($date)); // Obtener el día de la semana
     $starttime = mysqli_real_escape_string($con, $_POST['starttime']);
-    $endtime = mysqli_real_escape_string($con, $_POST['endtime']);
+    $starttime_datetime = new DateTime($starttime);
+    $endtime_datetime = clone $starttime_datetime;
+    $endtime_datetime->add(new DateInterval('PT1H'));
+    $endtime = $endtime_datetime->format('H:i');
     $bookavail = mysqli_real_escape_string($con, $_POST['bookavail']);
     $currenttime = date('H:i:s'); // Obtener la hora actual
 
     // Verificar si la hora actual es anterior al tiempo de inicio
-    if (strtotime($currenttime) < strtotime($starttime)) {
+    if ($currenttime < $starttime) {
         $query = "INSERT INTO doctorschedule (scheduleDate, scheduleDay, startTime, endTime, bookAvail)
                   VALUES ('$date', '$scheduleday', '$starttime', '$endtime', '$bookavail') ";
 
@@ -48,6 +64,9 @@ if (isset($_POST['submit'])) {
 }
 ?>
 
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
