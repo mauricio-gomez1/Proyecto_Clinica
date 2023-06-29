@@ -17,7 +17,7 @@ if (isset($_GET['appid'])) {
     if ($deleteResult) {
         // Actualiza el campo bookAvail en la tabla doctorschedule
         $scheduleId = $appointment['scheduleId'];
-        $updateQuery = "UPDATE doctorschedule SET bookAvail = 'available' WHERE scheduleId = $scheduleId";
+        $updateQuery = "UPDATE doctorschedule SET bookAvail = 'disponible' WHERE scheduleId = $scheduleId";
         $updateResult = mysqli_query($con, $updateQuery);
 
         if ($updateResult) {
