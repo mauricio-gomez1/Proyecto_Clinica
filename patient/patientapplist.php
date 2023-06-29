@@ -97,6 +97,7 @@ echo "<th>Fecha </th>";
 echo "<th>Inicio </th>";
 echo "<th>Final </th>";
 echo "<th>Imprimir </th>";
+echo "<th>Cancelar </th>";
 echo "</tr>";
 echo "</thead>";
 $res = mysqli_query($con, "SELECT a.*, b.*,c.*
