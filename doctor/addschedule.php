@@ -246,7 +246,7 @@ alert('Added fail. Please try again.');
                                      <i class="fa fa-clock-o">
                                      </i>
                                     </div>
-                                    <input class="form-control" id="endtime" name="endtime" type="text" required disabled/>
+                                    <input class="form-control" id="endtime" name="endtime" type="text" required />
                                    </div>
                                   </div>
                                  </div>
