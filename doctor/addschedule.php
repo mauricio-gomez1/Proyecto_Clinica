@@ -23,44 +23,29 @@ $endtime = $endtime_datetime->format('H:i');
 $bookavail         = mysqli_real_escape_string($con,$_POST['bookavail']);
 
 //INSERT
-if (isset($_POST['submit'])) {
-    $date = mysqli_real_escape_string($con, $_POST['date']);
-    $scheduleday = date('l', strtotime($date)); // Obtener el día de la semana
-    $starttime = mysqli_real_escape_string($con, $_POST['starttime']);
-    $starttime_datetime = new DateTime($starttime);
-    $endtime_datetime = clone $starttime_datetime;
-    $endtime_datetime->add(new DateInterval('PT1H'));
-    $endtime = $endtime_datetime->format('H:i');
-    $bookavail = mysqli_real_escape_string($con, $_POST['bookavail']);
-    $currenttime = date('H:i:s'); // Obtener la hora actual
+$query = " INSERT INTO doctorschedule (scheduleDate, scheduleDay, startTime, endTime, bookAvail)
+           VALUES ('$date', '$scheduleday', '$starttime', '$endtime', '$bookavail' ) ";
 
-    // Verificar si la hora actual es anterior al tiempo de inicio
-    if ($currenttime < $starttime) {
-        $query = "INSERT INTO doctorschedule (scheduleDate, scheduleDay, startTime, endTime, bookAvail)
-                  VALUES ('$date', '$scheduleday', '$starttime', '$endtime', '$bookavail') ";
 
-        $result = mysqli_query($con, $query);
+$result = mysqli_query($con, $query);
+// echo $result;
+if( $result )
+{
+?>
+<script type="text/javascript">
+alert('Schedule added successfully.');
+</script>
+<?php
+}
+else
+{
+?>
+<script type="text/javascript">
+alert('Added fail. Please try again.');
+</script>
+<?php
+}
 
-        if ($result) {
-            ?>
-            <script type="text/javascript">
-                alert('Schedule added successfully.');
-            </script>
-            <?php
-        } else {
-            ?>
-            <script type="text/javascript">
-                alert('Added failed. Please try again.');
-            </script>
-            <?php
-        }
-    } else {
-        ?>
-        <script type="text/javascript">
-            alert('Start time should be in the future.');
-        </script>
-        <?php
-    }
 }
 ?>
 
@@ -261,7 +246,7 @@ if (isset($_POST['submit'])) {
                                      <i class="fa fa-clock-o">
                                      </i>
                                     </div>
-                                    <input class="form-control" id="endtime" name="endtime" type="text" required />
+                                    <input class="form-control" id="endtime" name="endtime" type="text" required/>
                                    </div>
                                   </div>
                                  </div>
