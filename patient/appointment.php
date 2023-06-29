@@ -41,7 +41,7 @@ if( $result )
 {
 ?>
 <script type="text/javascript">
-alert('Appointment made successfully.');
+alert('Cita realizada con exito.');
 </script>
 <?php
 header("Location: patientapplist.php");
@@ -51,7 +51,7 @@ else
 	echo mysqli_error($con);
 ?>
 <script type="text/javascript">
-alert('Appointment booking fail. Please try again.');
+alert('Hubo un error. Porfavot intentalo de nuevo.');
 </script>
 <?php
 header("Location: patient/patient.php");

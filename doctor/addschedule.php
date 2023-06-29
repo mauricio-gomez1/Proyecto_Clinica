@@ -45,13 +45,13 @@ if (isset($_POST['submit'])) {
     if ($result) {
         ?>
         <script type="text/javascript">
-            alert('Schedule added successfully.');
+            alert('Horario agregado con exito.');
         </script>
         <?php
     } else {
         ?>
         <script type="text/javascript">
-            alert('Added fail. Please try again.');
+            alert('No se pudo agregar. Por favorr intentalo de nuevo.');
         </script>
         <?php
     }

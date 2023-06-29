@@ -21,7 +21,7 @@ if (isset($_POST['login'])) {
         exit;
     } else {
         echo '<script>';
-        echo 'alert("Wrong input");';
+        echo 'alert("Credenciales erroneas");';
         echo '</script>';
     }
 }
