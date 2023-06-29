@@ -71,11 +71,11 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                 
                 <tr class="item">
                     <td>
-                        ID de la cita
+                        Costo
                     </td>
                     
                     <td>
-                       <?php echo $userRow['appId'];?>
+                       $ 300
                     </td>
                 </tr>
                 
@@ -98,8 +98,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                         <?php echo $userRow['scheduleDay'];?>
                     </td>
                 </tr>
-                
-
+        
                  <tr class="item">
                     <td>
                         Fecha de la cita
