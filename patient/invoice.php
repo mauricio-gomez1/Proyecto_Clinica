@@ -17,7 +17,6 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 <html>
     <head>
         <meta charset="utf-8">
-        <title>A simple, clean, and responsive HTML invoice template</title>
         
         <link rel="stylesheet" type="text/css" href="assets/css/invoice.css">
     </head>
