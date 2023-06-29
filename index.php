@@ -155,151 +155,89 @@ if (isset($_POST['signup'])) {
                         
                         <!-- form start -->
                         <div class="container" id="wrap">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    
-                                    <form action="<?php $_PHP_SELF ?>" method="POST" accept-charset="utf-8" class="form" role="form">
-                                        <h4>El primer paso a mejorar su salud mental</h4>
-                                        <div class="row">
-                                            <div class="col-xs-6 col-md-6">
-                                                <input type="text" name="patientFirstName" value="" class="form-control input-lg" placeholder="Nombre" required />
-                                            </div>
-                                            <div class="col-xs-6 col-md-6">
-                                                <input type="text" name="patientLastName" value="" class="form-control input-lg" placeholder="Apellido" required />
-                                            </div>
-                                        </div>
-                                        
-                                        <input type="email" name="patientEmail" value="" class="form-control input-lg" placeholder="Email"  required/>
-                                        <input type="number" name="icPatient" value="" class="form-control input-lg" placeholder="Cuenta (solo numeros)"  required/>
-                                        
-                                        
-                                        <input type="password" name="password" value="" class="form-control input-lg" placeholder="Contraseña"  required/>
-
-                                        <input type="number" name="patientPhone" value="" class="form-control input-lg" placeholder="Numero de telefono"  required/>
-
-                                        <input type="text" name="patientAddress" value="" class="form-control input-lg" placeholder="Direccion"  required/>
-
-
-                                        <label>Fecha de nacimiento</label>
-                                        <div class="row">
-                                            
-                                            <div class="col-xs-4 col-md-4">
-                                                <select name="month" class = "form-control input-lg" required>
-                                                    <option value="">Mes</option>
-                                                    <option value="01">Enero</option>
-                                                    <option value="02">Febrero</option>
-                                                    <option value="03">Marzo</option>
-                                                    <option value="04">Abril</option>
-                                                    <option value="05">Mayo</option>
-                                                    <option value="06">Junio</option>
-                                                    <option value="07">Julio</option>
-                                                    <option value="08">Agosto</option>
-                                                    <option value="09">Septiembre</option>
-                                                    <option value="10">Octubre</option>
-                                                    <option value="11">Noviembre</option>
-                                                    <option value="12">Diciembre</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-xs-4 col-md-4">
-                                                <select name="day" class = "form-control input-lg" required>
-                                                    <option value="">Dia</option>
-                                                    <option value="01">1</option>
-                                                    <option value="02">2</option>
-                                                    <option value="03">3</option>
-                                                    <option value="04">4</option>
-                                                    <option value="05">5</option>
-                                                    <option value="06">6</option>
-                                                    <option value="07">7</option>
-                                                    <option value="08">8</option>
-                                                    <option value="09">9</option>
-                                                    <option value="10">10</option>
-                                                    <option value="11">11</option>
-                                                    <option value="12">12</option>
-                                                    <option value="13">13</option>
-                                                    <option value="14">14</option>
-                                                    <option value="15">15</option>
-                                                    <option value="16">16</option>
-                                                    <option value="17">17</option>
-                                                    <option value="18">18</option>
-                                                    <option value="19">19</option>
-                                                    <option value="20">20</option>
-                                                    <option value="21">21</option>
-                                                    <option value="22">22</option>
-                                                    <option value="23">23</option>
-                                                    <option value="24">24</option>
-                                                    <option value="25">25</option>
-                                                    <option value="26">26</option>
-                                                    <option value="27">27</option>
-                                                    <option value="28">28</option>
-                                                    <option value="29">29</option>
-                                                    <option value="30">30</option>
-                                                    <option value="31">31</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-xs-4 col-md-4">
-                                                <select name="year" class = "form-control input-lg" required>
-                                                    <option value="">Año</option>
-                                                    
-                                                    <option value="1981">1981</option>
-                                                    <option value="1982">1982</option>
-                                                    <option value="1983">1983</option>
-                                                    <option value="1984">1984</option>
-                                                    <option value="1985">1985</option>
-                                                    <option value="1986">1986</option>
-                                                    <option value="1987">1987</option>
-                                                    <option value="1988">1988</option>
-                                                    <option value="1989">1989</option>
-                                                    <option value="1990">1990</option>
-                                                    <option value="1991">1991</option>
-                                                    <option value="1992">1992</option>
-                                                    <option value="1993">1993</option>
-                                                    <option value="1994">1994</option>
-                                                    <option value="1995">1995</option>
-                                                    <option value="1996">1996</option>
-                                                    <option value="1997">1997</option>
-                                                    <option value="1998">1998</option>
-                                                    <option value="1999">1999</option>
-                                                    <option value="2000">2000</option>
-                                                    <option value="2001">2001</option>
-                                                    <option value="2002">2002</option>
-                                                    <option value="2003">2003</option>
-                                                    <option value="2004">2004</option>
-                                                    <option value="2005">2005</option>
-                                                    <option value="2006">2006</option>
-                                                    <option value="2007">2007</option>
-                                                    <option value="2008">2008</option>
-                                                    <option value="2009">2009</option>
-                                                    <option value="2010">2010</option>
-                                                    <option value="2011">2011</option>
-                                                    <option value="2012">2012</option>
-                                                    <option value="2013">2013</option>
-                                                    <option value="2014">2014</option>
-                                                    <option value="2015">2015</option>
-                                                    <option value="2016">2016</option>
-                                                    <option value="2017">2017</option>
-                                                    <option value="2018">2018</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <label>Genero : </label>
-                                        <label class="radio-inline">
-                                            <input type="radio" name="patientGender" value="Hombre" required/>Hombre
-                                        </label>
-                                        <label class="radio-inline" >
-                                            <input type="radio" name="patientGender" value="Mujer" required/>Mujer
-                                        </label>
-                                        <br />
-                                        <span class="help-block">Al darle click a "Crear mi cuenta" acepta los terminos y condiciones de este servicio.</span>
-                                        
-                                        <button class="btn btn-lg btn-primary btn-block signup-btn" type="submit" name="signup" id="signup">Crear mi cuenta</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+    <div class="row">
+        <div class="col-md-6">
+            <form action="<?php $_PHP_SELF ?>" method="POST" accept-charset="utf-8" class="form" role="form">
+                <h4>El primer paso a mejorar su salud mental</h4>
+                <div class="row">
+                    <div class="col-xs-6 col-md-6">
+                        <input type="text" name="patientFirstName" value="" class="form-control input-lg" placeholder="Nombre" required />
+                    </div>
+                    <div class="col-xs-6 col-md-6">
+                        <input type="text" name="patientLastName" value="" class="form-control input-lg" placeholder="Apellido" required />
                     </div>
                 </div>
-            </div>
+
+                <input type="email" name="patientEmail" value="" class="form-control input-lg" placeholder="Email" required />
+                <input type="number" name="icPatient" value="" class="form-control input-lg" placeholder="Cuenta (solo números)" required pattern="[0-9]+" />
+
+                <input type="password" name="password" value="" class="form-control input-lg" placeholder="Contraseña" required />
+
+                <input type="tel" name="patientPhone" value="" class="form-control input-lg" placeholder="Número de teléfono" required pattern="[0-9]+" />
+
+                <input type="text" name="patientAddress" value="" class="form-control input-lg" placeholder="Dirección" required />
+
+                <label>Fecha de nacimiento</label>
+                <div class="row">
+                    <div class="col-xs-4 col-md-4">
+                        <select name="month" class="form-control input-lg" required>
+                            <option value="">Mes</option>
+                            <option value="01">Enero</option>
+                            <option value="02">Febrero</option>
+                            <option value="03">Marzo</option>
+                            <option value="04">Abril</option>
+                            <option value="05">Mayo</option>
+                            <option value="06">Junio</option>
+                            <option value="07">Julio</option>
+                            <option value="08">Agosto</option>
+                            <option value="09">Septiembre</option>
+                            <option value="10">Octubre</option>
+                            <option value="11">Noviembre</option>
+                            <option value="12">Diciembre</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-4 col-md-4">
+                        <select name="day" class="form-control input-lg" required>
+                            <option value="">Día</option>
+                            <?php
+                            for ($i = 1; $i <= 31; $i++) {
+                                printf('<option value="%02d">%02d</option>', $i, $i);
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="col-xs-4 col-md-4">
+                        <select name="year" class="form-control input-lg" required>
+                            <option value="">Año</option>
+                            <?php
+                            $currentYear = date("Y");
+                            for ($i = 1981; $i <= $currentYear; $i++) {
+                                echo "<option value='$i'>$i</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+                </div>
+
+                <label>Genero:</label>
+                <label class="radio-inline">
+                    <input type="radio" name="patientGender" value="Hombre" required />Hombre
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="patientGender" value="Mujer" required />Mujer
+                </label>
+                <br />
+                <span class="help-block">Al darle click a "Crear mi cuenta" acepta los términos y condiciones de este servicio.</span>
+
+                <button class="btn btn-lg btn-primary btn-block signup-btn" type="submit" name="signup" id="signup">Crear mi cuenta</button>
+            </form>
         </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
         <!-- modal end -->
         <!-- modal container end -->
 
