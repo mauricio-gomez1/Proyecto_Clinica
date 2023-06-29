@@ -224,11 +224,11 @@ header( 'Location: doctorprofile.php' ) ;
                                                     </tr>
                                                     <tr>
                                                         <td>prefijo:</td>
-                                                        <td><input type="text" class="form-control" name="doctorFirstName" value="<?php echo $userRow['doctorFirstName']; ?>"disabled /></td>
+                                                        <td><input type="text" class="form-control" name="doctorFirstName" value="<?php echo $userRow['doctorFirstName']; ?>"/></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Nombre</td>
-                                                        <td><input type="text" class="form-control" name="doctorLastName" value="<?php echo $userRow['doctorLastName']; ?>"disabled  /></td>
+                                                        <td><input type="text" class="form-control" name="doctorLastName" value="<?php echo $userRow['doctorLastName']; ?>"/></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Numero de telefono</td>
