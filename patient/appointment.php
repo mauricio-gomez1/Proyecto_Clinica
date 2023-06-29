@@ -67,7 +67,7 @@ header("Location: patient/patient.php");
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 		
-		<title>Make Appoinment</title>
+		<title>PsychoTech</title>
 		<link href="assets/css/bootstrap.min.css" rel="stylesheet">
 		<link href="assets/css/default/style.css" rel="stylesheet">
 		<link href="assets/css/default/blocks.css" rcel="stylesheet">
