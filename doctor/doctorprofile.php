@@ -19,7 +19,7 @@ $doctorPhone = $_POST['doctorPhone'];
 $doctorEmail = $_POST['doctorEmail'];
 $doctorAddress = $_POST['doctorAddress'];
 
-$res=mysqli_query($con,"UPDATE doctor SET doctorFirstName='$doctorFirstName', doctorLastName='$doctorLastName', doctorPhone='$doctorPhone', doctorEmail='$doctorEmail', doctorAddress='$doctorAddress' WHERE doctorId=".$_SESSION['doctorSession']);
+$res=mysqli_query($con,"UPDATE doctor SET doctorPhone='$doctorPhone', doctorEmail='$doctorEmail', doctorAddress='$doctorAddress' WHERE doctorId=".$_SESSION['doctorSession']);
 // $userRow=mysqli_fetch_array($res);
 
 header( 'Location: doctorprofile.php' ) ;
@@ -224,11 +224,11 @@ header( 'Location: doctorprofile.php' ) ;
                                                     </tr>
                                                     <tr>
                                                         <td>prefijo:</td>
-                                                        <td><input type="text" class="form-control" name="doctorFirstName" value="<?php echo $userRow['doctorFirstName']; ?>"/></td>
+                                                        <td><?php echo $userRow['doctorFirstName']; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Nombre</td>
-                                                        <td><input type="text" class="form-control" name="doctorLastName" value="<?php echo $userRow['doctorLastName']; ?>"/></td>
+                                                        <td><?php echo $userRow['doctorLastName']; ?>/></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Numero de telefono</td>
