@@ -216,11 +216,11 @@ $widowed = "checked";
 													</tr>
 													<tr>
 														<td>Nombre: </td>
-														<td><input type="text" class="form-control" name="patientFirstName" value="<?php echo $userRow['patientFirstName']; ?>"  /></td>
+														<td><input type="text" class="form-control" name="patientFirstName" value="<?php echo $userRow['patientFirstName']; ?>"disabled /></td>
 													</tr>
 													<tr>
 														<td>Apellido: </td>
-														<td><input type="text" class="form-control" name="patientLastName" value="<?php echo $userRow['patientLastName']; ?>"  /></td>
+														<td><input type="text" class="form-control" name="patientLastName" value="<?php echo $userRow['patientLastName']; ?>"disabled  /></td>
 													</tr>
 													
 													<!-- radio button -->
@@ -247,7 +247,7 @@ $widowed = "checked";
 													<!-- radio button end -->
 													<tr>
 														<td>Fecha de nacimiento</td>
-														<!-- <td><input type="text" class="form-control" name="patientDOB" value="<?php echo $userRow['patientDOB']; ?>"  /></td> -->
+														<!-- <td><input type="text" class="form-control" name="patientDOB" value="<?php echo $userRow['patientDOB']; ?> "  /></td> -->
 														<td>
 															<div class="form-group ">
 																
@@ -256,7 +256,7 @@ $widowed = "checked";
 																		<i class="fa fa-calendar">
 																		</i>
 																	</div>
-																	<input class="form-control" id="patientDOB" name="patientDOB" placeholder="YYYY/MM/DD" type="text" value="<?php echo $userRow['patientDOB']; ?>"/>
+																	<input class="form-control" id="patientDOB" name="patientDOB" placeholder="YYYY/MM/DD" type="text" value="<?php echo $userRow['patientDOB']; ?>"disabled/>
 																</div>
 															</div>
 														</td>
@@ -267,10 +267,10 @@ $widowed = "checked";
 														<td>Genero</td>
 														<td>
 															<div class="radio">
-																<label><input type="radio" name="patientGender" value="male" <?php echo $male; ?>>Hombre</label>
+																<label><input type="radio" name="patientGender" value="male" <?php echo $male; ?> disabled>Hombre</label>
 															</div>
 															<div class="radio">
-																<label><input type="radio" name="patientGender" value="female" <?php echo $female; ?>>Mujer</label>
+																<label><input type="radio" name="patientGender" value="female" <?php echo $female; ?> disabled>Mujer</label>
 															</div>
 														</td>
 													</tr>
