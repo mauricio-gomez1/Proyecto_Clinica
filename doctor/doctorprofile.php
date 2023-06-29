@@ -228,7 +228,7 @@ header( 'Location: doctorprofile.php' ) ;
                                                     </tr>
                                                     <tr>
                                                         <td>Nombre</td>
-                                                        <td><?php echo $userRow['doctorLastName']; ?>/></td>
+                                                        <td><?php echo $userRow['doctorLastName']; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Numero de telefono</td>

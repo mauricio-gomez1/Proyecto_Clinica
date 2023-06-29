@@ -23,7 +23,7 @@ $patientPhone = $_POST['patientPhone'];
 $patientEmail = $_POST['patientEmail'];
 $patientId = $_POST['patientId'];
 // mysqli_query("UPDATE blogEntry SET content = $udcontent, title = $udtitle WHERE id = $id");
-$res=mysqli_query($con,"UPDATE patient SET patientFirstName='$patientFirstName', patientLastName='$patientLastName', patientMaritialStatus='$patientMaritialStatus', patientDOB='$patientDOB', patientGender='$patientGender', patientAddress='$patientAddress', patientPhone=$patientPhone, patientEmail='$patientEmail' WHERE icPatient=".$_SESSION['patientSession']);
+$res=mysqli_query($con,"UPDATE patient SET  patientMaritialStatus='$patientMaritialStatus', patientDOB='$patientDOB', patientGender='$patientGender', patientAddress='$patientAddress', patientPhone=$patientPhone, patientEmail='$patientEmail' WHERE icPatient=".$_SESSION['patientSession']);
 // $userRow=mysqli_fetch_array($res);
 header( 'Location: profile.php' ) ;
 }
@@ -216,11 +216,11 @@ $widowed = "checked";
 													</tr>
 													<tr>
 														<td>Nombre: </td>
-														<td><input type="text" class="form-control" name="patientFirstName" value="<?php echo $userRow['patientFirstName']; ?>"disabled /></td>
+														<td><?php echo $userRow['patientFirstName']; ?></td>
 													</tr>
 													<tr>
 														<td>Apellido: </td>
-														<td><input type="text" class="form-control" name="patientLastName" value="<?php echo $userRow['patientLastName']; ?>"disabled  /></td>
+														<td><?php echo $userRow['patientLastName']; ?></td>
 													</tr>
 													
 													<!-- radio button -->
