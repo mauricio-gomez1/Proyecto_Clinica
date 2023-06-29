@@ -152,7 +152,7 @@ header("Location: patient/patient.php");
 										
 										<form class="form" role="form" method="POST" accept-charset="UTF-8">
 											<div class="panel panel-default">
-												<div class="panel-heading">Patient Information</div>
+												<div class="panel-heading">Informacion del paciente</div>
 												<div class="panel-body">
 													
 													Nombre del Paciente: <?php echo $userRow['patientFirstName'] ?> <?php echo $userRow['patientLastName'] ?><br>
