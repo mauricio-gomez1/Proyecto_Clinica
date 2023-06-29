@@ -1,51 +1,52 @@
+p
+Copy code
 <?php
 session_start();
 include_once '../assets/conn/dbconnect.php';
-// include_once 'connection/server.php';
-if(!isset($_SESSION['doctorSession']))
-{
-header("Location: ../index.php");
-}
-$usersession = $_SESSION['doctorSession'];
-$res=mysqli_query($con,"SELECT * FROM doctor WHERE doctorId=".$usersession);
-$userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
-// insert
 
+if (!isset($_SESSION['doctorSession'])) {
+    header("Location: ../index.php");
+}
+
+$userSession = $_SESSION['doctorSession'];
+$res = mysqli_query($con, "SELECT * FROM doctor WHERE doctorId = $userSession");
+$userRow = mysqli_fetch_array($res, MYSQLI_ASSOC);
 
 if (isset($_POST['submit'])) {
-$date = mysqli_real_escape_string($con,$_POST['date']);
-$scheduleday  = mysqli_real_escape_string($con,$_POST['scheduleday']);
-$starttime = mysqli_real_escape_string($con,$_POST['starttime']);
-$starttime_datetime = new DateTime($starttime);
-$endtime_datetime = clone $starttime_datetime;
-$endtime_datetime->add(new DateInterval('PT1H'));
-$endtime = $endtime_datetime->format('H:i');
-$bookavail         = mysqli_real_escape_string($con,$_POST['bookavail']);
+    $date = mysqli_real_escape_string($con, $_POST['date']);
+    $scheduleday = date('l', strtotime($date)); // Obtener el día de la semana
+    $starttime = mysqli_real_escape_string($con, $_POST['starttime']);
+    $endtime = mysqli_real_escape_string($con, $_POST['endtime']);
+    $bookavail = mysqli_real_escape_string($con, $_POST['bookavail']);
+    $currenttime = date('H:i:s'); // Obtener la hora actual
 
-//INSERT
-$query = " INSERT INTO doctorschedule (scheduleDate, scheduleDay, startTime, endTime, bookAvail)
-           VALUES ('$date', '$scheduleday', '$starttime', '$endtime', '$bookavail' ) ";
+    // Verificar si la hora actual es anterior al tiempo de inicio
+    if (strtotime($currenttime) < strtotime($starttime)) {
+        $query = "INSERT INTO doctorschedule (scheduleDate, scheduleDay, startTime, endTime, bookAvail)
+                  VALUES ('$date', '$scheduleday', '$starttime', '$endtime', '$bookavail') ";
 
+        $result = mysqli_query($con, $query);
 
-$result = mysqli_query($con, $query);
-// echo $result;
-if( $result )
-{
-?>
-<script type="text/javascript">
-alert('Schedule added successfully.');
-</script>
-<?php
-}
-else
-{
-?>
-<script type="text/javascript">
-alert('Added fail. Please try again.');
-</script>
-<?php
-}
-
+        if ($result) {
+            ?>
+            <script type="text/javascript">
+                alert('Schedule added successfully.');
+            </script>
+            <?php
+        } else {
+            ?>
+            <script type="text/javascript">
+                alert('Added failed. Please try again.');
+            </script>
+            <?php
+        }
+    } else {
+        ?>
+        <script type="text/javascript">
+            alert('Start time should be in the future.');
+        </script>
+        <?php
+    }
 }
 ?>
 
