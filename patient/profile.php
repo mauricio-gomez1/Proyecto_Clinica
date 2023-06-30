@@ -1,56 +1,56 @@
 <?php
 session_start();
-// include_once '../connection/server.php';
 include_once '../assets/conn/dbconnect.php';
-if(!isset($_SESSION['patientSession']))
-{
-header("Location: ../index.php");
+
+if (!isset($_SESSION['patientSession'])) {
+    header("Location: ../index.php");
 }
-$res=mysqli_query($con,"SELECT * FROM patient WHERE icPatient=".$_SESSION['patientSession']);
-$userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
-?>
-<!-- update -->
-<?php
+
+$res = mysqli_query($con, "SELECT * FROM patient WHERE icPatient=" . $_SESSION['patientSession']);
+$userRow = mysqli_fetch_array($res, MYSQLI_ASSOC);
+
 if (isset($_POST['submit'])) {
-//variables
-$patientFirstName = $_POST['patientFirstName'];
-$patientLastName = $_POST['patientLastName'];
-$patientMaritialStatus = $_POST['patientMaritialStatus'];
-$patientDOB = $_POST['patientDOB'];
-$patientGender = $_POST['patientGender'];
-$patientAddress = $_POST['patientAddress'];
-$patientPhone = $_POST['patientPhone'];
-$patientEmail = $_POST['patientEmail'];
-$patientId = $_POST['patientId'];
-// mysqli_query("UPDATE blogEntry SET content = $udcontent, title = $udtitle WHERE id = $id");
-$res=mysqli_query($con,"UPDATE patient SET  patientMaritialStatus='$patientMaritialStatus', patientDOB='$patientDOB', patientGender='$patientGender', patientAddress='$patientAddress', patientPhone=$patientPhone, patientEmail='$patientEmail' WHERE icPatient=".$_SESSION['patientSession']);
-// $userRow=mysqli_fetch_array($res);
-header( 'Location: profile.php' ) ;
+    $patientMaritialStatus = $_POST['patientMaritialStatus'];
+    $patientDOB = $_POST['patientDOB'];
+    $patientGender = $_POST['patientGender'];
+    $patientAddress = $_POST['patientAddress'];
+    $patientPhone = $_POST['patientPhone'];
+    $patientEmail = $_POST['patientEmail'];
+
+    $query = "UPDATE patient SET patientMaritialStatus='$patientMaritialStatus', patientDOB='$patientDOB', patientGender='$patientGender', patientAddress='$patientAddress', patientPhone='$patientPhone', patientEmail='$patientEmail' WHERE icPatient=" . $_SESSION['patientSession'];
+
+    $res = mysqli_query($con, $query);
+
+    if ($res) {
+        header('Location: profile.php');
+    } else {
+        echo "Error en la actualización de datos: " . mysqli_error($con);
+    }
 }
-?>
-<?php
-$male="";
-$female="";
-if ($userRow['patientGender']=='male') {
-$male = "checked";
-}elseif ($userRow['patientGender']=='female') {
-$female = "checked";
+
+$male = "";
+$female = "";
+if ($userRow['patientGender'] == 'male') {
+    $male = "checked";
+} elseif ($userRow['patientGender'] == 'female') {
+    $female = "checked";
 }
-$single="";
-$married="";
-$separated="";
-$divorced="";
-$widowed="";
-if ($userRow['patientMaritialStatus']=='single') {
-$single = "checked";
-}elseif ($userRow['patientMaritialStatus']=='married') {
-$married = "checked";
-}elseif ($userRow['patientMaritialStatus']=='separated') {
-$separated = "checked";
-}elseif ($userRow['patientMaritialStatus']=='divorced') {
-$divorced = "checked";
-}elseif ($userRow['patientMaritialStatus']=='widowed') {
-$widowed = "checked";
+
+$single = "";
+$married = "";
+$separated = "";
+$divorced = "";
+$widowed = "";
+if ($userRow['patientMaritialStatus'] == 'single') {
+    $single = "checked";
+} elseif ($userRow['patientMaritialStatus'] == 'married') {
+    $married = "checked";
+} elseif ($userRow['patientMaritialStatus'] == 'separated') {
+    $separated = "checked";
+} elseif ($userRow['patientMaritialStatus'] == 'divorced') {
+    $divorced = "checked";
+} elseif ($userRow['patientMaritialStatus'] == 'widowed') {
+    $widowed = "checked";
 }
 ?>
 <!DOCTYPE html>
