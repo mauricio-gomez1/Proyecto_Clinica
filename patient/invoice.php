@@ -78,16 +78,6 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                        $ 300
                     </td>
                 </tr>
-                
-                <tr class="item">
-                    <td>
-                        Horario 
-                    </td>
-                    
-                    <td>
-                        <?php echo $userRow['scheduleId'];?>
-                    </td>
-                </tr>
 
                 <tr class="item">
                     <td>
@@ -126,6 +116,16 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                     
                     <td>
                         <?php echo $userRow['appSymptom'];?> 
+                    </td>
+                </tr>
+
+                <tr class="item">
+                    <td>
+                        Comentarios 
+                    </td>
+                    
+                    <td>
+                        <?php echo $userRow['appComment'];?>
                     </td>
                 </tr>
                 
