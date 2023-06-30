@@ -193,28 +193,27 @@ if (isset($_POST['signup'])) {
                                             </div>
                                         </div>
                                         
-                                        <input type="email" name="patientEmail" value="" class="form-control input-lg" placeholder="Email" required />
-                                        <input type="number" name="icPatient" pattern="[0-9]{10}" value="" class="form-control input-lg" placeholder="Cuenta (solo números, 10 dígitos)" required />
-
-                                        
-                                        
-                                        <input type="password" name="password" value="" class="form-control input-lg" placeholder="Contraseña"  required/>
-
-                                        <input type="number" name="icPatient" pattern="[0-9]+" value="" class="form-control input-lg" placeholder="Cuenta (solo números)" maxlength="10" required />
-<span id="accountNumberError" style="color: red; display: none;">El numero debe tener exactamente 10 dígitos.</span>
+                                        <input type="email" name="patientEmail" value="" class="form-control input-lg" placeholder="Email (ejemplo@gmail.com)" pattern="[a-zA-Z0-9._%+-]+@gmail\.com$" required />
+<span id="emailError" style="color: red; display: none;">Ingrese una dirección de correo electrónico de Gmail válida.</span>
 
 <script>
-  document.querySelector('input[name="icPatient"]').addEventListener('input', function() {
-    var accountNumber = this.value.trim();
-    var accountNumberError = document.getElementById('accountNumberError');
-    if (accountNumber.length !== 10) {
-      accountNumberError.style.display = 'block';
+  document.querySelector('input[name="patientEmail"]').addEventListener('input', function() {
+    var email = this.value.trim();
+    var emailError = document.getElementById('emailError');
+    if (!email.match(/[a-zA-Z0-9._%+-]+@gmail\.com$/)) {
+      emailError.style.display = 'block';
     } else {
-      accountNumberError.style.display = 'none';
+      emailError.style.display = 'none';
     }
   });
 </script>
 
+                                        <input type="number" name="icPatient" pattern="[0-9]+" value="" class="form-control input-lg" placeholder="Cuenta (solo números)" required />
+                                        
+                                        
+                                        <input type="password" name="password" value="" class="form-control input-lg" placeholder="Contraseña"  required/>
+
+                                        <input type="number" name="patientPhone" pattern="[0-9]{10}" value="" class="form-control input-lg" placeholder="Número de teléfono" required />
 
                                         <input type="text" name="patientAddress" value="" class="form-control input-lg" placeholder="Direccion"  required/>
 
