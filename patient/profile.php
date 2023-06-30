@@ -267,10 +267,10 @@ if ($userRow['patientMaritialStatus'] == 'single') {
 														<td>Genero</td>
 														<td>
 															<div class="radio">
-																<label><input type="radio" name="patientGender" value="male" <?php echo $male; ?> disabled>Hombre</label>
+																<label><input type="radio" name="patientGender" value="male" <?php echo $male; ?>>Hombre</label>
 															</div>
 															<div class="radio">
-																<label><input type="radio" name="patientGender" value="female" <?php echo $female; ?> disabled>Mujer</label>
+																<label><input type="radio" name="patientGender" value="female" <?php echo $female; ?>>Mujer</label>
 															</div>
 														</td>
 													</tr>
