@@ -22,40 +22,47 @@ $scheduleid = mysqli_real_escape_string($con,$appid);
 $symptom = mysqli_real_escape_string($con,$_POST['symptom']);
 $comment = mysqli_real_escape_string($con,$_POST['comment']);
 $avail = "no disponible";
+// ...
+$query = "INSERT INTO appointment (patientIc, scheduleId, appSymptom, appComment)
+VALUES ('$patientIc', '$scheduleid', '$symptom', '$comment')";
 
-
-$query = "INSERT INTO appointment (  patientIc , scheduleId , appSymptom , appComment  )
-VALUES ( '$patientIc', '$scheduleid', '$symptom', '$comment') ";
-
-//update table appointment schedule
-$sql = "UPDATE doctorschedule SET bookAvail = 'no disponible' WHERE scheduleId = $scheduleid" ;
-$scheduleres=mysqli_query($con,$sql);
+// Update table appointment schedule
+$sql = "UPDATE doctorschedule SET bookAvail = '$avail' WHERE scheduleId = $scheduleid";
+$scheduleres = mysqli_query($con, $sql);
 if ($scheduleres) {
-	$btn= "disable";
-} 
-
-
-$result = mysqli_query($con,$query);
-// echo $result;
-if( $result )
-{
-?>
-<script type="text/javascript">
-alert('Cita realizada con exito.');
-</script>
-<?php
-header("Location: patientapplist.php");
+    $btn = "disable";
+} else {
+    echo mysqli_error($con);
+    ?>
+    <script type="text/javascript">
+        alert('Hubo un error. Por favor inténtalo de nuevo.');
+    </script>
+    <?php
+    header("Location: patient/patient.php");
+    exit;
 }
-else
-{
-	echo mysqli_error($con);
-?>
-<script type="text/javascript">
-alert('Hubo un error. Porfavot intentalo de nuevo.');
-</script>
-<?php
-header("Location: patient/patient.php");
+
+$result = mysqli_query($con, $query);
+if ($result) {
+    ?>
+    <script type="text/javascript">
+        alert('Cita realizada con éxito.');
+    </script>
+    <?php
+    header("Location: patientapplist.php");
+    exit;
+} else {
+    echo mysqli_error($con);
+    ?>
+    <script type="text/javascript">
+        alert('Hubo un error. Por favor inténtalo de nuevo.');
+    </script>
+    <?php
+    header("Location: patient/patient.php");
+    exit;
 }
+// ...
+
 //dapat dari generator end
 }
 ?>
