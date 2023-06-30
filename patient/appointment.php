@@ -37,19 +37,19 @@
         $result = mysqli_query($con, $query);
         
         if ($result) {
-            ?>
-            <script type="text/javascript">
-                alert('Cita realizada con éxito.');
-            </script>
-            <?php
+        
+			echo '<script>';
+            alert('Cita realizada con éxito.');
+			echo '</script>';
+            
             header("Location: patient/patientapplist.php");
         } else {
             echo mysqli_error($con);
-            ?>
-            <script type="text/javascript">
-                alert('Hubo un error. Por favor inténtalo de nuevo.');
-            </script>
-            <?php
+           
+			echo '<script>';
+            alert('Hubo un error. Por favor inténtalo de nuevo.');
+			echo '</script>';
+            
             header("Location: patient/patientapplist.php");
         }
         // Dapat dari generator end
