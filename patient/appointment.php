@@ -40,9 +40,7 @@ $result = mysqli_query($con,$query);
 if( $result )
 {
 ?>
-<script type="text/javascript">
-alert('Cita realizada con exito.');
-</script>
+
 <?php
 header("Location: patient.php");
 }
@@ -50,9 +48,7 @@ else
 {
 	echo mysqli_error($con);
 ?>
-<script type="text/javascript">
-alert('Hubo un error. Porfavo intentalo de nuevo.');
-</script>
+
 <?php
 header("Location: patient/patient.php");
 }
