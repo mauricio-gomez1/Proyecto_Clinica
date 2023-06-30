@@ -44,9 +44,9 @@ if( $result )
 alert('Cita realizada con exito.');
 </script>
 <?php
-header("Location: patient.php");
+$_SESSION['patientSession'] = $row['icPatient'];
+header("Location: /patient/patient.php");
 exit;
-
 }
 else
 {
@@ -56,8 +56,9 @@ else
 alert('Hubo un error. Porfavo intentalo de nuevo.');
 </script>
 <?php
-header("Location: patient/patient.php");
-exit;
+    $_SESSION['patientSession'] = $row['icPatient'];
+    header("Location: /patient/patient.php");
+    exit;
 }
 //dapat dari generator end
 }
