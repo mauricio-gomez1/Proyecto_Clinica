@@ -45,16 +45,19 @@ alert('Cita realizada con exito.');
 </script>
 <?php
 header("Location: patient.php");
+exit;
+
 }
 else
 {
 	echo mysqli_error($con);
 ?>
 <script type="text/javascript">
-alert('Hubo un error. Porfavot intentalo de nuevo.');
+alert('Hubo un error. Porfavo intentalo de nuevo.');
 </script>
 <?php
 header("Location: patient/patient.php");
+exit;
 }
 //dapat dari generator end
 }
