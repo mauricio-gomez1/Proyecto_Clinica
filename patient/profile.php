@@ -267,10 +267,10 @@ $widowed = "checked";
 														<td>Genero</td>
 														<td>
 															<div class="radio">
-																<label><?php echo $male; ?>Hombre</label>
+																<label><input type="radio" name="patientGender" value="male" <?php echo $male; ?>>Hombre</label>
 															</div>
 															<div class="radio">
-																<label><?php echo $female; ?>Mujer</label>
+																<label><input type="radio" name="patientGender" value="female" <?php echo $female; ?>>Mujer</label>
 															</div>
 														</td>
 													</tr>
