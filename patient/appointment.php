@@ -171,16 +171,17 @@ header("Location: patient/patient.php");
 											</div>
 											
 											<div class="form-group">
-												<label for="recipient-name" class="control-label">Sintomas: </label>
-												<input type="text" class="form-control" name="symptom" required>
-											</div>
-											<div class="form-group">
-												<label for="message-text" class="control-label">Comentarios: </label>
-												<textarea class="form-control" name="comment" required></textarea>
-											</div>
-											<div class="form-group">
-												<input type="submit" name="appointment" id="submit" class="btn btn-primary" value="Agende su cita!">
-											</div>
+    <label for="recipient-name" class="control-label">Síntomas: </label>
+    <input type="text" class="form-control" name="symptom" pattern="[A-Za-z\s]+" title="Ingrese solo texto" required>
+</div>
+<div class="form-group">
+    <label for="message-text" class="control-label">Comentarios: </label>
+    <textarea class="form-control" name="comment" pattern="[A-Za-z\s]+" title="Ingrese solo texto" required></textarea>
+</div>
+<div class="form-group">
+    <input type="submit" name="appointment" id="submit" class="btn btn-primary" value="Agende su cita!">
+</div>
+
 										</form>
 									</div>
 								</div>
