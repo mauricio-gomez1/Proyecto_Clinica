@@ -256,7 +256,7 @@ $widowed = "checked";
 																		<i class="fa fa-calendar">
 																		</i>
 																	</div>
-																	<?php echo $userRow['patientDOB']; ?>
+																	<?php echo $userRow['patientDOB']; ?>"/>
 																</div>
 															</div>
 														</td>
