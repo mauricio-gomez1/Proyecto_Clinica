@@ -200,7 +200,21 @@ if (isset($_POST['signup'])) {
                                         
                                         <input type="password" name="password" value="" class="form-control input-lg" placeholder="Contraseña"  required/>
 
-                                        <input type="number" name="patientPhone" pattern="[0-9]+" value="" class="form-control input-lg" placeholder="Número de teléfono" required />
+                                        <input type="number" name="icPatient" pattern="[0-9]+" value="" class="form-control input-lg" placeholder="Cuenta (solo números)" maxlength="10" required />
+<span id="accountNumberError" style="color: red; display: none;">El numero debe tener exactamente 10 dígitos.</span>
+
+<script>
+  document.querySelector('input[name="icPatient"]').addEventListener('input', function() {
+    var accountNumber = this.value.trim();
+    var accountNumberError = document.getElementById('accountNumberError');
+    if (accountNumber.length !== 10) {
+      accountNumberError.style.display = 'block';
+    } else {
+      accountNumberError.style.display = 'none';
+    }
+  });
+</script>
+
 
                                         <input type="text" name="patientAddress" value="" class="form-control input-lg" placeholder="Direccion"  required/>
 
