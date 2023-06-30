@@ -42,7 +42,7 @@
                 alert('Cita realizada con éxito.');
             </script>
             <?php
-            header("Location: patient.php");
+            header("Location: patient/patientapplist.php");
         } else {
             echo mysqli_error($con);
             ?>
@@ -50,7 +50,7 @@
                 alert('Hubo un error. Por favor inténtalo de nuevo.');
             </script>
             <?php
-            header("Location: patient/patient.php");
+            header("Location: patient/patientapplist.php");
         }
         // Dapat dari generator end
     }
