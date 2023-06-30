@@ -256,7 +256,7 @@ $widowed = "checked";
 																		<i class="fa fa-calendar">
 																		</i>
 																	</div>
-																	<?php echo $userRow['patientDOB']; ?>"/>
+																	<input class="form-control" id="patientDOB" name="patientDOB" placeholder="YYYY/MM/DD" type="text" value="<?php echo $userRow['patientDOB']; ?>"disabled/>
 																</div>
 															</div>
 														</td>
@@ -267,10 +267,10 @@ $widowed = "checked";
 														<td>Genero</td>
 														<td>
 															<div class="radio">
-																<label><input type="radio" name="patientGender" value="male" <?php echo $male; ?>>Hombre</label>
+																<label><input type="radio" name="patientGender" value="male" <?php echo $male; ?> disabled>Hombre</label>
 															</div>
 															<div class="radio">
-																<label><input type="radio" name="patientGender" value="female" <?php echo $female; ?>>Mujer</label>
+																<label><input type="radio" name="patientGender" value="female" <?php echo $female; ?> disabled>Mujer</label>
 															</div>
 														</td>
 													</tr>
