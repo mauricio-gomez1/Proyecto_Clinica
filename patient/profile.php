@@ -264,16 +264,17 @@ if ($userRow['patientMaritialStatus'] == 'single') {
 													</tr>
 													<!-- radio button -->
 													<tr>
-														<td>Genero</td>
-														<td>
-															<div class="radio">
-																<label><input type="radio" name="patientGender" value="hombre" <?php echo $male; ?>>Hombre</label>
-															</div>
-															<div class="radio">
-																<label><input type="radio" name="patientGender" value="mujer" <?php echo $female; ?>>Mujer</label>
-															</div>
-														</td>
+ 															<td>Genero</td>
+  														<td>
+    														<div class="radio">
+      															<label><input type="radio" name="patientGender" value="hombre" <?php echo ($userRow['patientGender'] == 'hombre') ? 'checked' : ''; ?>>Hombre</label>
+   		 													</div>
+   						 									<div class="radio">
+      															<label><input type="radio" name="patientGender" value="mujer" <?php echo ($userRow['patientGender'] == 'mujer') ? 'checked' : ''; ?>>Mujer</label>
+    														</div>
+  														</td>
 													</tr>
+
 													<!-- radio button end -->
 													
 													<tr>
