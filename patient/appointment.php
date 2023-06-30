@@ -44,7 +44,7 @@ if( $result )
 alert('Cita realizada con exito.');
 </script>
 <?php
-header("Location: patientapplist.php");
+header("Location: patient.php");
 }
 else
 {
