@@ -1,6 +1,10 @@
+
+<?php
+include_once '../assets/conn/dbconnect.php';
+?>
+
 <?php
 session_start();
-include_once '../assets/conn/dbconnect.php';
 
 $session = $_SESSION['patientSession'];
 $appid = null;
@@ -15,7 +19,8 @@ if (isset($_GET['scheduleDate']) && isset($_GET['appid'])) {
 $res = mysqli_query($con, "SELECT a.*, b.* FROM doctorschedule a INNER JOIN patient b
 WHERE a.scheduleDate='$appdate' AND scheduleId=$appid AND b.icPatient=$session");
 $userRow = mysqli_fetch_array($res, MYSQLI_ASSOC);
-
+?>
+<?php
 // INSERT
 if (isset($_POST['appointment'])) {
     $patientIc = mysqli_real_escape_string($con, $userRow['icPatient']);
@@ -57,7 +62,6 @@ if (isset($_POST['appointment'])) {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
