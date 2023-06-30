@@ -55,7 +55,6 @@
         // Dapat dari generator end
     }
 ?>
-
 <!DOCTYPE html>
 <html>
 	<head>
