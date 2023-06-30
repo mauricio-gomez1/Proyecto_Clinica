@@ -28,7 +28,7 @@ $query = "INSERT INTO appointment (  patientIc , scheduleId , appSymptom , appCo
 VALUES ( '$patientIc', '$scheduleid', '$symptom', '$comment') ";
 
 //update table appointment schedule
-$sql = "UPDATE doctorschedule SET bookAvail = '$avail' WHERE scheduleId = $scheduleid" ;
+$sql = "UPDATE doctorschedule SET bookAvail = 'no disponible' WHERE scheduleId = $scheduleid" ;
 $scheduleres=mysqli_query($con,$sql);
 if ($scheduleres) {
 	$btn= "disable";
