@@ -217,7 +217,7 @@ if (isset($_POST['signup'])) {
 <span id="accountNumberError" style="color: red; display: none;">La cuenta debe tener exactamente 10 dígitos.</span>
 
 <script>
-  document.querySelector('input[name="icPatient"]').addEventListener('input', function() {
+  document.querySelector('input[name="patientPhone"]').addEventListener('input', function() {
     var accountNumber = this.value.trim();
     var accountNumberError = document.getElementById('accountNumberError');
     if (accountNumber.length !== 10) {
