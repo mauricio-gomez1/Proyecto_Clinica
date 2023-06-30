@@ -45,7 +45,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                         <table>
                             <tr>
                                 <td>
-                                    <?php echo $userRow['patientAddress'];?>
+                                    <h2>Direccion de tu empresa</h2>
                                 </td>
                                 
                                 <td><?php echo $userRow['patientIc'];?><br>
