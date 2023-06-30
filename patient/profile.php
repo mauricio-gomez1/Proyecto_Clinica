@@ -256,7 +256,7 @@ if ($userRow['patientMaritialStatus'] == 'single') {
 																		<i class="fa fa-calendar">
 																		</i>
 																	</div>
-																	<input class="form-control" id="patientDOB" name="patientDOB" placeholder="YYYY/MM/DD" type="text" value="<?php echo $userRow['patientDOB']; ?>"/>
+																	<input class="form-control" id="patientDOB" name="patientDOB" placeholder="YYYY/MM/DD" type="text" value="<?php echo $userRow['patientDOB']; ?>" readonly/>
 																</div>
 															</div>
 														</td>
@@ -267,10 +267,10 @@ if ($userRow['patientMaritialStatus'] == 'single') {
 														<td>Genero</td>
 														<td>
 															<div class="radio">
-																<label><input type="radio" name="patientGender" value="male" <?php echo $male; ?>>Hombre</label>
+																<label><input type="radio" name="patientGender" value="hombre" <?php echo $male; ?>>Hombre</label>
 															</div>
 															<div class="radio">
-																<label><input type="radio" name="patientGender" value="female" <?php echo $female; ?>>Mujer</label>
+																<label><input type="radio" name="patientGender" value="mujer" <?php echo $female; ?>>Mujer</label>
 															</div>
 														</td>
 													</tr>
