@@ -10,6 +10,7 @@ $res = mysqli_query($con, "SELECT * FROM patient WHERE icPatient=" . $_SESSION['
 $userRow = mysqli_fetch_array($res, MYSQLI_ASSOC);
 
 if (isset($_POST['submit'])) {
+    // Obtener los valores del formulario
     $patientMaritialStatus = $_POST['patientMaritialStatus'];
     $patientDOB = $_POST['patientDOB'];
     $patientGender = $_POST['patientGender'];
@@ -17,24 +18,23 @@ if (isset($_POST['submit'])) {
     $patientPhone = $_POST['patientPhone'];
     $patientEmail = $_POST['patientEmail'];
 
-    $query = "UPDATE patient SET patientMaritialStatus='$patientMaritialStatus', patientDOB='$patientDOB', patientGender='$patientGender', patientAddress='$patientAddress', patientPhone='$patientPhone', patientEmail='$patientEmail' WHERE icPatient=" . $_SESSION['patientSession'];
+    // Validar que el campo de fecha de nacimiento no esté vacío y sea una fecha válida
+    if (!empty($patientDOB) && strtotime($patientDOB) !== false) {
+        // Realizar la actualización en la base de datos
+        $query = "UPDATE patient SET patientMaritialStatus='$patientMaritialStatus', patientDOB='$patientDOB', patientGender='$patientGender', patientAddress='$patientAddress', patientPhone='$patientPhone', patientEmail='$patientEmail' WHERE icPatient=" . $_SESSION['patientSession'];
 
-    $res = mysqli_query($con, $query);
+        $res = mysqli_query($con, $query);
 
-    if ($res) {
-        header('Location: profile.php');
+        if ($res) {
+            header('Location: profile.php');
+        } else {
+            echo "Error en la actualización de datos: " . mysqli_error($con);
+        }
     } else {
-        echo "Error en la actualización de datos: " . mysqli_error($con);
+        echo "Fecha de nacimiento no válida";
     }
 }
 
-$male = "";
-$female = "";
-if ($userRow['patientGender'] == 'male') {
-    $male = "checked";
-} elseif ($userRow['patientGender'] == 'female') {
-    $female = "checked";
-}
 
 $single = "";
 $married = "";
@@ -256,7 +256,7 @@ if ($userRow['patientMaritialStatus'] == 'single') {
 																		<i class="fa fa-calendar">
 																		</i>
 																	</div>
-																	<input class="form-control" id="patientDOB" name="patientDOB" placeholder="YYYY/MM/DD" type="text" value="<?php echo $userRow['patientDOB']; ?>"disabled/>
+																	<input class="form-control" id="patientDOB" name="patientDOB" placeholder="YYYY/MM/DD" type="text" value="<?php echo $userRow['patientDOB']; ?>"/>
 																</div>
 															</div>
 														</td>
