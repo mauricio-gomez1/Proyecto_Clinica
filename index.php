@@ -194,7 +194,8 @@ if (isset($_POST['signup'])) {
                                         </div>
                                         
                                         <input type="email" name="patientEmail" value="" class="form-control input-lg" placeholder="Email" required />
-                                        <input type="number" name="icPatient" pattern="[0-9]+" value="" class="form-control input-lg" placeholder="Cuenta (solo números)" required />
+                                        <input type="number" name="icPatient" pattern="[0-9]{10}" value="" class="form-control input-lg" placeholder="Cuenta (solo números, 10 dígitos)" required />
+
                                         
                                         
                                         <input type="password" name="password" value="" class="form-control input-lg" placeholder="Contraseña"  required/>
